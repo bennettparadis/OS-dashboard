@@ -10,28 +10,28 @@ def density_calc(df_selection):
         st.subheader("Density Metrics")
         
         if df_selection["total"].isnull().all():
-            st.markdown('<p style="font-size:16px; font-family: Arial, sans-serif;">Total Density: Data not available for this site during this year.</p>', unsafe_allow_html=True)
+            st.markdown('<p style="font-size:18px; font-family: Arial, sans-serif;">Total Density: Data not available for this site during this year.</p>', unsafe_allow_html=True)
         else:
             total_density = int(df_selection["total"].mean())
-            st.markdown(f'<p style="font-size:16px; font-family: Arial, sans-serif;">Total Density: {total_density:,} {oysters_per_sq_meter}</p>', unsafe_allow_html=True)
+            st.markdown(f'<p style="font-size:18px; font-family: Arial, sans-serif;">Total Density: {total_density:,} {oysters_per_sq_meter}</p>', unsafe_allow_html=True)
         
         if df_selection["legal"].isnull().all():
-            st.markdown('<p style="font-size:16px; font-family: Arial, sans-serif;">Legal Density: Data not available for this site during this year.</p>', unsafe_allow_html=True)
+            st.markdown('<p style="font-size:18px; font-family: Arial, sans-serif;">Legal Density: Data not available for this site during this year.</p>', unsafe_allow_html=True)
         else:
             legal_density = int(df_selection["legal"].mean())
-            st.markdown(f'<p style="font-size:16px; font-family: Arial, sans-serif;">Legal Density: {legal_density:,} {oysters_per_sq_meter}</p>', unsafe_allow_html=True)
+            st.markdown(f'<p style="font-size:18px; font-family: Arial, sans-serif;">Legal Density: {legal_density:,} {oysters_per_sq_meter}</p>', unsafe_allow_html=True)
         
         if df_selection["sublegal"].isnull().all():
-            st.markdown('<p style="font-size:16px; font-family: Arial, sans-serif;">Sublegal Density: Data not available for this site during this year.</p>', unsafe_allow_html=True)
+            st.markdown('<p style="font-size:18px; font-family: Arial, sans-serif;">Sublegal Density: Data not available for this site during this year.</p>', unsafe_allow_html=True)
         else:
             sublegal_density = int(df_selection["sublegal"].mean())
-            st.markdown(f'<p style="font-size:16px; font-family: Arial, sans-serif;">Sublegal Density: {sublegal_density:,} {oysters_per_sq_meter}</p>', unsafe_allow_html=True)
+            st.markdown(f'<p style="font-size:18px; font-family: Arial, sans-serif;">Sublegal Density: {sublegal_density:,} {oysters_per_sq_meter}</p>', unsafe_allow_html=True)
 
         if df_selection["spat"].isnull().all():
-            st.markdown('<p style="font-size:16px; font-family: Arial, sans-serif;">Spat Density: Data not available for this site during this year.</p>', unsafe_allow_html=True)
+            st.markdown('<p style="font-size:18px; font-family: Arial, sans-serif;">Spat Density: Data not available for this site during this year.</p>', unsafe_allow_html=True)
         else:
             spat_density = int(df_selection["spat"].mean())
-            st.markdown(f'<p style="font-size:16px; font-family: Arial, sans-serif;">Spat Density: {spat_density:,} {oysters_per_sq_meter}</p>', unsafe_allow_html=True)
+            st.markdown(f'<p style="font-size:18px; font-family: Arial, sans-serif;">Spat Density: {spat_density:,} {oysters_per_sq_meter}</p>', unsafe_allow_html=True)
 
 def make_histogram(data_selection, histogram_df, max_y):
     if histogram_df is None or histogram_df.empty:
