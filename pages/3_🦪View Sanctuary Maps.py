@@ -1,47 +1,25 @@
 import streamlit as st
-import plotly.express as px
-import numpy as np
 import pandas as pd
+import pydeck as pdk
 import geopandas as gpd
-import warnings
-from utils import maps
 
-# Suppress warnings
-warnings.filterwarnings('ignore')
+# Load data
+df = pd.read_csv('data/2019-2023_oyster_densities.csv')
+OSMaterial = gpd.read_file("data/OS_material_storymap.shp")
+OSBoundaries = gpd.read_file("data/permit_boundaries.shp")
 
-# Tab display 
+# Set up the Streamlit page
 st.set_page_config(page_title="NC Oyster Sanctuary Data", page_icon=":oyster:", layout="wide")
 
-#IMPORT OS DATA (densities and extraction samples)
-OSMaterial = gpd.read_file("data/OS_material_storymap.shp")
-df = pd.read_csv("data/2019-2023_oyster_densities.csv")
-
-# --- HEADER & INFO TEXT ---
 st.markdown(
     f"""
     <div style="text-align: center;">
-        <p style="font-size:50px; font-weight: bold;">🦪View Oyster Sanctuary Maps</p>
+        <p style="font-size:50px; font-weight: bold;">🌍Explore Pamlico Sound</p>
     </div>
     """, 
     unsafe_allow_html=True
 )
 
-st.markdown(
-    f"""
-    <div style="text-align: center;">
-        <p style="font-size:20px;">Noth Carolina's oyster sanctuaries are large-scale restoration sites ranging from 4 to 80. Each sanctuary has been built with a variety of materials such as crushed aggregate rock (marl limestone, granite, concrete, basalt), reef balls, concrete pipe, and recycled shell. Here you can view the material blueprint and additional information for each sanctuary. </p>
-    </div>
-    """, 
-    unsafe_allow_html=True
-)
-
-st.info(
-    """
-    **Select an oyster sanctuary from the dropdown menu on the left to see the site information and map. Click, drag, and zoom in and on the material blueprint. Hover your cursor over the different polygons to get information on the material type, coordinates, deployment date, and area. This geospatial data includes all materials deployed between 1996 and 2023.** 
-"""
-)
-
-# ----- SIDE BAR -----
 # Define the custom CSS
 custom_css = """
 <style>
@@ -58,37 +36,106 @@ custom_css = """
 st.markdown(custom_css, unsafe_allow_html=True)
 
 
-sanctuary_names = sorted(df["OS_Name"].unique())
-default_sanctuary1 = "Neuse River"
+st.markdown(
+    f"""
+    <div style="text-align: center;">
+        <p style="font-size:20px;">As of 2023, North Carolina has 15 oyster sanctuaries in Pamlico Sound, providing a total of 563 acres of protected subtidal habitat. Every year NCDMF's Habitat & Enhancement dive team visits each sanctuary to collect oyster data around the reefs. Explore the map to see how oyster densities differ across Pamlico Sound over the last few years.</p>
+    </div>
+    """, 
+    unsafe_allow_html=True
+)
+with st.expander("Instructions"):
+    st.info("""
+             **Click and drag the map to explore Pamlico Sound. Use the scroll-wheel to zoom in and out.**
 
-default_sanctuary_index1 = list(df["OS_Name"].unique()).index(default_sanctuary1)
+              **Hold the right mouse button to rotate the map.** 
+
+             **The red bars show where our dive team has sampled at each sanctuary. Hover over one to see the oyster density at that sample.**
+
+             **Select a year from the drop down menu in the sidebar to see how densities change over time.** 
+    """)
 
 
-st.sidebar.subheader("Use the filters to explore the different material footprints at each Sanctuary!")
-st.sidebar.header("Select Filters:")
+st.sidebar.subheader("Use the dropdown to select a year and explore oyster densities across the Oyster Sanctuary Network")
+default_year = 2023
+default_year_index = list(df["Year"].unique()).index(default_year)
 
-sanctuary1 = st.sidebar.selectbox(
-    "Select an Oyster Sanctuary:",
-    sanctuary_names,
-    index=default_sanctuary_index1,
-    key=11
+year = st.sidebar.selectbox(
+    "Select a Year:", 
+    df["Year"].unique(),
+    index=default_year_index,
+    key=30
 )
 
-# Filter the GeoDataFrame based on the selected sanctuary
-filtered_material1 = OSMaterial[OSMaterial['OS_Site'] == sanctuary1]
+df_selection = df.query("Year == @year")
 
-col1, col2 = st.columns([10,5])
+# Remove rows with missing values in 'Latitude', 'Longitude', 'total'
+df_selection = df_selection.dropna(subset=['Latitude', 'Longitude', 'total'])
 
-with col1:
-    #MAP
-    maps.display_map(sanctuary1, filtered_material1, 600, 600)
+# Extract centroids for each geometry in OSBoundaries
+OSBoundaries['centroid'] = OSBoundaries.geometry.centroid
+OSBoundaries['Latitude'] = OSBoundaries.centroid.y
+OSBoundaries['Longitude'] = OSBoundaries.centroid.x
 
-with col2:
-    #SANCTUARY SITE INFORMATION
-    maps.site_info(sanctuary1)
+# Convert centroids to a DataFrame
+boundary_centroid_data = OSBoundaries[['OS_Name', 'Latitude', 'Longitude']]
 
-    st.info("""
-    *Permit acreage is the boundary area delineated as protected habitat under NC law
-    
-    *Developed habitat is the area covered by material and the space between mounds/ridges  
-""")
+# Convert GeoDataFrame to GeoJSON dictionary
+geojson_dict = OSMaterial.to_crs(epsg=4326).__geo_interface__
+
+# Define layers
+# TextLayer with positions of each geometry's centroid
+text_layer = pdk.Layer(
+    "TextLayer",
+    data=boundary_centroid_data,
+    get_position=["Longitude", "Latitude"],
+    get_text="OS_Name",
+    get_color=[0, 0, 0, 255],
+    get_size=20,
+    get_alignment_baseline="'top'",
+)
+
+# Material layer
+material_layer = pdk.Layer(
+    "GeoJsonLayer",
+    data=geojson_dict,  
+    get_fill_color=[255, 0, 0, 150],
+    pickable=True,
+)
+
+max_total = df_selection['total'].max()
+
+density_layer = pdk.Layer(
+    "ColumnLayer",
+    data=df_selection,
+    get_position=["Longitude", "Latitude"],
+    get_elevation="total",
+    radius=8,
+    elevation_scale=1,
+    get_fill_color=[255, 0, 0, 150],
+    pickable=True,
+    auto_highlight=True,
+)
+
+tooltip = {
+    "html": "<b>Oysters/m²:</b> {total}",
+    "style": {
+        "backgroundColor": "steelblue",
+        "color": "white"
+    }
+}
+
+# Display map
+st.pydeck_chart(
+    pdk.Deck(
+        map_style="mapbox://styles/mapbox/outdoors-v9",
+        initial_view_state={
+            "latitude": 35.05,
+            "longitude": -76.4,
+            "zoom": 11.2,
+            "pitch": 60,
+        },
+        layers=[text_layer, density_layer, material_layer],
+        tooltip=tooltip  # Add the tooltip configuration
+    )
+)
