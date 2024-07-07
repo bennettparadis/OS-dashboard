@@ -185,18 +185,16 @@ col1, col2, col3 = st.columns([10,0.5,10])
 #SELECTION 1 COLUMN
 with col1:
     st.header(f"{sanctuary1} ({year1})")
-    col4,col5 = st.columns(2)
-    with col4:
-        # DENSITY METRICS FOR SELECTION 1
-        densityhistograms.density_calc(df_selection1)
-
-    with col5:
-        #SANCTUARY SITE 1 INFORMATION
-        maps.site_info(sanctuary1)
+    
+    # DENSITY METRICS FOR SELECTION 1
+    densityhistograms.density_calc(df_selection1)
 
     #HISTOGRAM 1
     densityhistograms.make_histogram(df_selection1, histogram_df1, max_y_value)
 
+    #SANCTUARY SITE 1 INFORMATION
+    maps.site_info(sanctuary1)
+    
     #MAP 1
     maps.display_map(sanctuary1, filtered_material1, 500, 450)
    
@@ -218,18 +216,15 @@ with col2:
 #SELECTION 2 COLUMN
 with col3:
     st.header(f"{sanctuary2} ({year2})")
-    col6,col7 = st.columns(2)
     
-    with col6: 
-        # DENSITY METRICS FOR SELECTION 2
-        densityhistograms.density_calc(df_selection2)
+    # DENSITY METRICS FOR SELECTION 2
+    densityhistograms.density_calc(df_selection2)
 
-    with col7:
-        #SANCTUARY SITE 2 INFORMATION
-        maps.site_info(sanctuary2)
- 
     #HISTOGRAM 2
     densityhistograms.make_histogram(df_selection2, histogram_df2, max_y_value)
 
     #MAP 2
     maps.display_map(sanctuary2, filtered_material2, 500, 450)
+
+    #SANCTUARY SITE 2 INFORMATION
+    maps.site_info(sanctuary2)
