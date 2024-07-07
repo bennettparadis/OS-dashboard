@@ -11,21 +11,6 @@ OSBoundaries = gpd.read_file("data/permit_boundaries.shp")
 # Set up the Streamlit page
 st.set_page_config(page_title="NC Oyster Sanctuary Data", page_icon=":oyster:", layout="wide")
 
-# Define the custom CSS
-custom_css = """
-<style>
-    /* Change the color and font of the page titles in the sidebar */
-    .eczjsme13 {
-        color: #00647B !important; /* Replace with your desired color */
-        font-weight: bold !important;
-        font-size: 18px !important;
-    }
-</style>
-"""
-
-# Apply the custom CSS
-st.markdown(custom_css, unsafe_allow_html=True)
-
 st.markdown(
     f"""
     <div style="text-align: center;">
@@ -38,17 +23,22 @@ st.markdown(
 st.markdown(
     f"""
     <div style="text-align: center;">
-        <p style="font-size:20px;">Welcome to North Carolina's Pamlico Sound -- home to 15 oyster sanctuaries spanning 563 acres of protected subtidal habitat. Every year NCDMF's Habitat & Enhancement dive team visits each sanctuary to collect oyster density estimates all around the reefs which are then used for further analysis and to quantify reef performance.</p>
+        <p style="font-size:20px;">As of 2023, North Carolina has 15 oyster sanctuaries in Pamlico Sound, providing a total of 563 acres of protected subtidal habitat. Every year NCDMF's Habitat & Enhancement dive team visits each sanctuary to collect oyster data around the reefs. Explore the map to see how oyster densities differ across Pamlico Sound over the last few years.</p>
     </div>
     """, 
     unsafe_allow_html=True
 )
+with st.expander("Instructions"):
+    st.write("""
+             **Click and drag the map to explore Pamlico Sound. Use the scroll-wheel to zoom in and out.**
 
-st.info("""
-    **Explore the map to see how oyster densities differ across Pamlico Sound. Zoom in and you will see where our dive team has sampled along each sanctuary and the general layout of each site. Hold the right mouse button to rotate the map. Hover your cursor over the columns to see how many oysters were found at each point. Select a year from the drop down menu in the sidebar to see how densities change over time.** 
-    
-    *NOTE: Red columns indicate two or more samples were collected in close proximity to one another.
-""")
+              **Hold the right mouse button to rotate the map.** 
+
+             **The red bars show where our dive team has sampled at each sanctuary. Hover over one to see the oyster density at that sample.**
+
+             **Select a year from the drop down menu in the sidebar to see how densities change over time.** 
+    """)
+
 
 st.sidebar.subheader("Use the dropdown to select a year and explore oyster densities across the Oyster Sanctuary Network")
 default_year = 2023
