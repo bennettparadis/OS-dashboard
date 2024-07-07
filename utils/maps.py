@@ -143,7 +143,7 @@ transparency_value = 0.7
 def site_info(sanctuary_selection):
     st.subheader("Site Info")
     st.markdown(f'<p style="font-size:18px; font-family: Arial, sans-serif;">Permit Acreage: {OS_dict[sanctuary_selection]["permit"]} acres</p>', unsafe_allow_html=True)
-    st.markdown(f'<p style="font-size:180px; font-family: Arial, sans-serif;">Developed Habitat: {OS_dict[sanctuary_selection]["developed"]} acres</p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="font-size:18px; font-family: Arial, sans-serif;">Developed Habitat: {OS_dict[sanctuary_selection]["developed"]} acres</p>', unsafe_allow_html=True)
     st.markdown(f'<p style="font-size:18px; font-family: Arial, sans-serif;">Year Established: {OS_dict[sanctuary_selection]["established"]}</p>', unsafe_allow_html=True)
     # st.markdown(f'<p style="font-size:18px; font-family: Arial, sans-serif;">Most Recent Addition: {OS_dict[sanctuary_selection]["recent"]}</p>', unsafe_allow_html=True)
     st.markdown(f'<p style="font-size:18px; font-family: Arial, sans-serif;">Total Aggregate Rock: {OS_dict[sanctuary_selection]["aggregate"]} tons</p>', unsafe_allow_html=True)
