@@ -37,8 +37,8 @@ st.markdown(
 
 st.subheader('Objectives')
 container = st.container(border = True)
-container.write('Evaluating performance of an oyster sanctuary involves monitoring the long-term stability of reef materials and quantifying their ability as reef habitat to host oysters over time. Monitoring oyster sanctuaries can benefit restoration practices by demonstrating which factors contribute to effective restoration and which materials are best suited for maximum performance. The primary objectives of this monitoring program are as follows:')
-container.markdown("""
+container.info('Evaluating performance of an oyster sanctuary involves monitoring the long-term stability of reef materials and quantifying their ability as reef habitat to host oysters over time. Monitoring oyster sanctuaries can benefit restoration practices by demonstrating which factors contribute to effective restoration and which materials are best suited for maximum performance. The primary objectives of this monitoring program are as follows:')
+container.info("""
 1)	Evaluate material performance as oyster habitat.
 2)	Evaluate material long-term durability and stability. 
 3)	Evaluate overall material performance for reproductive potential and larval recruitment
