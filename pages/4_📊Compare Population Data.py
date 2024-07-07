@@ -47,6 +47,22 @@ with st.expander("Instructions"):
         st.write('**test**')
 
 # ----- SIDE BAR -----
+# Define the custom CSS
+custom_css = """
+<style>
+    /* Change the color and font of the page titles in the sidebar */
+    .eczjsme13 {
+        color: #00647B !important; /* Replace with your desired color */
+        font-weight: bold !important;
+        font-size: 18px !important;
+    }
+</style>
+"""
+
+# Apply the custom CSS
+st.markdown(custom_css, unsafe_allow_html=True)
+
+
 sanctuary_names = sorted(df["OS_Name"].unique())
 default_year = 2023
 default_sanctuary1 = "Neuse River"
