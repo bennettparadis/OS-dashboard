@@ -25,7 +25,7 @@ def density_calc(df_selection):
             st.markdown('<p style="font-size:18px; font-family: Arial, sans-serif;">Sublegal Density: Data not available for this site during this year.</p>', unsafe_allow_html=True)
         else:
             sublegal_density = int(df_selection["sublegal"].mean())
-            st.markdown(f'<p style="font-size:20px; font-family: Arial, sans-serif;">Sublegal Density: {sublegal_density:,} {oysters_per_sq_meter}</p>', unsafe_allow_html=True)
+            st.markdown(f'<p style="font-size:18px; font-family: Arial, sans-serif;">Sublegal Density: {sublegal_density:,} {oysters_per_sq_meter}</p>', unsafe_allow_html=True)
 
         if df_selection["spat"].isnull().all():
             st.markdown('<p style="font-size:18px; font-family: Arial, sans-serif;">Spat Density: Data not available for this site during this year.</p>', unsafe_allow_html=True)
