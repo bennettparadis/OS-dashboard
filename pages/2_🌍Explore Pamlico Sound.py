@@ -45,7 +45,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 with st.expander("Instructions"):
-    st.write("""
+    st.info("""
              **Click and drag the map to explore Pamlico Sound. Use the scroll-wheel to zoom in and out.**
 
               **Hold the right mouse button to rotate the map.** 
