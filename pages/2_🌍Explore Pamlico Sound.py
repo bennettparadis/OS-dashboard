@@ -27,7 +27,7 @@ custom_css = """
     .eczjsme13 {
         color: #00647B !important; /* Replace with your desired color */
         font-weight: bold !important;
-        font-size: 18px !important;
+        font-size: 16px !important;
     }
 </style>
 """
