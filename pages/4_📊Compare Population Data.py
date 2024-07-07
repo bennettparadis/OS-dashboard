@@ -47,7 +47,7 @@ with st.expander("Instructions"):
                     
             **Below the histograms you can also see a map & site info for additional comparisons.**
         
-            For example: Try out comparing the same sanctuary site in 2022 & 2023! Or choose the same site & year but compare different materials.
+            Want some examples? Try comparing **Swan Island** in **2022 & 2023**! Take it another step and choose **Swan Island 2023** for both selections, but compare **granite** & **marl**.
         """)
 
 # ----- SIDE BAR -----
