@@ -31,20 +31,22 @@ st.markdown(
 st.markdown(
     f"""
     <div style="text-align: center;">
-        <p style="font-size:20px;">The annual dive surveys involve gathering quadrat samples on the various materials within each oyster sanctuary. From those samples we 
-         can visualize the population structure in terms of size class. This data also gives us an idea for how well the different materials function. Here you can compare oyster metrics between sites, years, and materials. </p>
+        <p style="font-size:20px;">The annual dive surveys provide snapshots of the oyster populations at each sanctuary. From those data we 
+         can estimate densities and visualize population structures. We can compare how these metrics change over time and how they vary by each material. Try it out and make some comparisons of your own!</p>
     </div>
     """, 
     unsafe_allow_html=True
 )
 
-st.info("""
-    **Use the filters in the sidebar to see how density estimates and population structures change between sanctuaries, materials, and from year to year. Spat are 'baby' oysters (<26mm), whereas Legal oysters are considered market sized (>75mm), and Sublegal is everything in between. Scroll down to see compare population structures with the histograms. Below those you can also see a map for additional reference.**
-""")
-
-
 with st.expander("Instructions"):
-        st.write('**test**')
+        st.info("""**Use the filters in the sidebar to see how density estimates and population structures change between sanctuaries, materials, and from year to year.** 
+        
+                **The histogram below shows the frequency of each size class.** Spat are 'baby' oysters (<26mm). Legal oysters are market sized (>75mm). Sublegal is everything in between. 
+                
+                **Below the histograms you can also see a map & site info for additional comparisons.**
+
+                What some examples? Try out comparing the same sanctuary site in 2022 & 2023! Or choose the same site & year but compare different materials.
+            """)
 
 # ----- SIDE BAR -----
 # Define the custom CSS
@@ -74,7 +76,7 @@ default_sanctuary_index2 = list(df["OS_Name"].unique()).index(default_sanctuary2
 
 
 st.sidebar.subheader("Use the filters on the left to make comparisons between sanctuaries, materials, and years!")
-st.sidebar.header("Select Filters:")
+st.sidebar.header("Selection 1:")
 year1 = st.sidebar.selectbox(
     "Select a Year:", 
     df["Year"].unique(),
@@ -105,6 +107,7 @@ hist_selection1 = histdata.query(
     "Year == @year1 & OS_Name ==@sanctuary1 & Material == @material_type1"
 )
 
+st.sidebar.header("Selection 2:")
 year2 = st.sidebar.selectbox(
     "Select a Year:", 
     df["Year"].unique(),
