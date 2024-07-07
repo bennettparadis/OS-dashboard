@@ -50,7 +50,7 @@ with st.expander("Instructions"):
 
               **Hold the right mouse button to rotate the map.** 
 
-             **The red bars show where our dive team has sampled at each sanctuary. Hover over one to see the oyster density at that sample.**
+             **The red bars show where our dive team has sampled at each sanctuary. Hover over one to see the observed oyster density.**
 
              **Select a year from the drop down menu in the sidebar to see how densities change over time.** 
     """)
