@@ -210,7 +210,7 @@ with col2:
                 <style>
                     .divider-vertical-line {
                         border-left: 2px solid rgba(176, 206, 218);
-                        height: 1600px;
+                        height: 1800px;
                         margin: auto;
                     }
                 </style>
