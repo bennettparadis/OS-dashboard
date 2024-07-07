@@ -39,14 +39,16 @@ st.markdown(
 )
 
 with st.expander("Instructions"):
-        st.info("""**Use the filters in the sidebar to see how density estimates and population structures change between sanctuaries, materials, and from year to year.** 
+        st.info("""
+            **Use the filters in the sidebar to see how density estimates and population structures change between sanctuaries, materials, and from year to year.** 
+            
+            **The histogram below shows the frequency of each size class.** 
+            Spat are 'baby' oysters (<26mm). Legal oysters are market sized (>75mm). Sublegal is everything in between. 
+                    
+            **Below the histograms you can also see a map & site info for additional comparisons.**
         
-                **The histogram below shows the frequency of each size class.** Spat are 'baby' oysters (<26mm). Legal oysters are market sized (>75mm). Sublegal is everything in between. 
-                
-                **Below the histograms you can also see a map & site info for additional comparisons.**
-
-                What some examples? Try out comparing the same sanctuary site in 2022 & 2023! Or choose the same site & year but compare different materials.
-            """)
+            For example: Try out comparing the same sanctuary site in 2022 & 2023! Or choose the same site & year but compare different materials.
+        """)
 
 # ----- SIDE BAR -----
 # Define the custom CSS
