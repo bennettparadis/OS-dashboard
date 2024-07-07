@@ -223,8 +223,10 @@ with col3:
     #HISTOGRAM 2
     densityhistograms.make_histogram(df_selection2, histogram_df2, max_y_value)
 
+    #SANCTUARY SITE 2 INFORMATION
+    maps.site_info(sanctuary2)
+    
     #MAP 2
     maps.display_map(sanctuary2, filtered_material2, 500, 450)
 
-    #SANCTUARY SITE 2 INFORMATION
-    maps.site_info(sanctuary2)
+
