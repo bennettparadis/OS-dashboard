@@ -189,7 +189,7 @@ with st.expander("Boxplot Instructions"):
             **A boxplot can directly compare the efficacy of the various material types used in our oyster restoration efforts.**
             **This plot will also refresh with any filters you select in the sidebar.**
 
-            **This also helps to visualize any statistical outliers. Which materials appear to be best for oysters? What about spat recruitment?**
+            **This also helps to visualize any statistical outliers. Which materials appear to be best for oysters? What about spat recruitment? Does any particular year show a different trend?**
             """)
 
 
