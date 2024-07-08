@@ -46,8 +46,14 @@ container.info("""
 
 st.subheader('Sampling Methodology')
 
+#rand_select = st.container()
+
 with st.expander("Random Selection"):
-    st.write('test')
+    col1, col2 = st.columns(2)
+        with col1:
+            st.info('test')
+        with col2:
+            st.info('test')
 
 with st.expander("Excavation samples"):
     st.write('test')
