@@ -27,9 +27,7 @@ st.markdown(
 st.markdown(
     f"""
     <div style="text-align: center;">
-        <p style="font-size:20px;">North Carolina's oyster sanctuaries represent a significant effort towards improving the future outlook for subtidal oyster populations in Pamlico Sound. Annual monitoring efforts of the oyster sanctuaries have resulted in the accumulation of a high-resolution dataset which is used in the development of future habitat restoration and enhancement projects. </p>
-    <div style="text-align: center;">
-        <p style="font-size:20px;">Below is an in-depth description of the methodology used by the dive team for collecting samples used in the evaluation of oyster metrics.</p>
+        <p style="font-size:20px;">Annual monitoring efforts of the oyster sanctuaries have resulted in the accumulation of a high-resolution dataset which is used in the development of future habitat restoration and enhancement projects. The results of this continued monitoring effort are made interactive in this dashboard. Below is an in-depth description of the methodology used by the dive team for collecting samples used in the evaluation of oyster metrics.</p>
     </div>
     """, 
     unsafe_allow_html=True
