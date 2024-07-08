@@ -51,7 +51,13 @@ rand_select = st.container()
 rand_select.write("This is a test")
 
 with st.expander("Random Selection"):
-    st.info('test')
+    st.info("""
+            Before any diver gets in the water, sampling maps are created to plan where oyster data will be collected on each sanctuary. The number of samples is determined by the number of materials and the amount of each material present on each sanctuary.
+    
+            A minimum of 4 dives are conducted for each material type. If there is more than 2 acres covered by a material, then 5 samples are collected.  
+
+            Dive sites are randomly selected using ESRI's ArcGIS Pro. Once in the field, divers and support staff will mark the site with an anchored polyball. 
+            """)
 
 with st.expander("Excavation samples"):
     st.write('test')
