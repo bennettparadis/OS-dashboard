@@ -58,17 +58,20 @@ with st.expander("Random Selection"):
 
             Dive sites are randomly selected using geospatial software (ESRI's ArcGIS Pro). Once in the field, divers and support staff will mark the site with an anchored polyball. 
 
-            Each visit to one of the oyster sanctuaries, salinity, dissolved oxygen, and temperature levels are recorded via handheld YSI at the surface and at the bottom.
+            Each day our dive team visits an oyster sanctuary, they record salinity, dissolved oxygen, and temperature levels via handheld YSI at the surface and at the bottom.
 
             Additionally, divers collect observational data on every site. This includes sample depth, sedimentation level, boring sponge (presence/absence), observed fish and invertebrates, and percent coverage for oysters and mussels.
             """)
 
 with st.expander("Excavation samples"):
     st.info("""
-    
+            Certain materials are relatively easy for divers to remove from the reef. Various aggregate rocks have been used to build the sanctuaries and are typically the site of a basketball (Class B). 
+            These include limestone marl, crushed granite, crushed concrete, and basalt. Various types of recycled shell were used at one point to 'refurbish' older sites. This included oyster shell and surf clam shell; however, these shells did not have the same longevity as other materials.
+            
+            When diving on these types of materials, divers are able to excavate the material and attached oysters by hand. Divers use a 1/4 square meter quadrat and remove the top 15-20cm to standardize the amount of material excavated. The oysters and rock are put into a tethered basket, which is then brought up to the boat. At the surface, the first 400 oysters are measured. The remaining sample is counted up. 
             """)
 
 with st.expander("Observation samples"):
         st.info("""
-    
+            
             """)
