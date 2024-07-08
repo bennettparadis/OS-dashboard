@@ -27,7 +27,7 @@ st.markdown(
 st.markdown(
     f"""
     <div style="text-align: center;">
-        <p style="font-size:20px;">Annual monitoring efforts of the oyster sanctuaries have resulted in the accumulation of a high-resolution dataset which is used in the development of future habitat restoration and enhancement projects. The results of this continued monitoring effort are made interactive in this dashboard. Below is an in-depth description of the methodology used by the dive team for collecting samples used in the evaluation of oyster metrics.</p>
+        <p style="font-size:20px;">Annual monitoring efforts of the oyster sanctuaries have resulted in the accumulation of a high-resolution dataset which is used in the development of future habitat restoration and enhancement projects. This continuous dataset are now interactive in this dashboard. Below is an in-depth description of the methodology used by the dive team for collecting the oyster data on display here.</p>
     </div>
     """, 
     unsafe_allow_html=True
