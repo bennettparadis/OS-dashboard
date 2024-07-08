@@ -38,7 +38,7 @@ st.markdown(
 )
 
 st.info("**Hello and welcome to the Oyster Sanctuary Data Visualization Dashboard! The dataset featured here is part of ongoing oyster restoration and monitoring efforts in North Carolina. "
-           f"If you would like to learn more about the importance of Oyster Sanctuaries and how they are built in North Carolina, please visit the [StoryMap](https://storymaps.arcgis.com/stories/d876f9b131174f859270c600ccf3545f)!**")
+           f"If you would like to learn more about the importance of Oyster Sanctuaries, how they are built in North Carolina, and current projects, please visit the [StoryMap](https://storymaps.arcgis.com/stories/d876f9b131174f859270c600ccf3545f)!**")
 
 st.markdown(
     f"""
