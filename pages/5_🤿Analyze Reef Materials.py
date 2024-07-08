@@ -17,37 +17,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.markdown(
-    f"""
-    <div style="text-align: center;">
-        <p style="font-size:20px;">North Carolina's Division of Marine Fisheries has been building Oyster Sanctuaries for nearly 30 years with a variety of materials. How these materials persist over time will be incredibly useful for the future of the Sanctuary Program as well as other oyster restoration efforts. Here you can explore the age of various materials and their respective oyster densities. Analyze the performance of material types over time by seeing how the scatterplot and box plots change below.</p>
-    </div>
-    """, 
-    unsafe_allow_html=True
-)
-
-st.info("""
-    **Analyze the past five years of oyster monitoring data like a biologist by using the sidebar to filter years, size classes, and sanctuaries. The scatterplot below will update with a trend line for projected oyster density over time. View information for each sample by hovering over a point. Click on materials in the legend to remove them from your analysis. Double click one to isolate it. Double-click the legend again to reset.** 
-    
-    **Scroll further down to compare material performance with a box plot. The figure will automatically update with the filters used in your scatterplot analysis.**
-""")
-
-with st.expander("Instructions"):
-    st.write('test')
-
-with st.expander("Tips"):
-    st.write('test')
-
-with st.expander("Examples"):
-    st.write('test')
-
-
-
-df = pd.read_csv("data/2019-2023_oyster_densities.csv")
-
-#SIDEBAR
-
-# Define the custom CSS
+# Define the custom CSS for sidebar pages
 custom_css = """
 <style>
     /* Change the color and font of the page titles in the sidebar */
@@ -61,6 +31,33 @@ custom_css = """
 
 # Apply the custom CSS
 st.markdown(custom_css, unsafe_allow_html=True)
+
+
+st.markdown(
+    f"""
+    <div style="text-align: center;">
+        <p style="font-size:20px;">North Carolina's oldest oyster sanctuaries are nearly 30 years old. With a variety of materials used to build the sanctuaries, knowing how these materials persist over time is important for future oyster restoration efforts. Here you can analyze the relationship of material age and oyster density using a scatterplot and a boxplot.</p>
+    </div>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.info("""
+    **Analyze the past five years of oyster monitoring data by using the sidebar to set filters and interact with the graphs below.** 
+""")
+
+with st.expander("Scatterplot Instructions"):
+    st.info("""
+            **Each point is a density estimate collected during Sanctuary sampling. Hover over each sample to view the observed oyster density, material type & age, and collection date.**
+            
+            **Remove materials from your analysis by clicking on them in the legend. Double click a material to isolate it. Double click the legend again to reset the plot.**
+
+            **Draw a square on the plot to zoom in on a particular set of data points. Double click to reset the plot.** 
+
+            **Choose to view the densities for all oysters, or only legal, sublegal, spat, or non-spat (legal + sublegal).**
+""")
+
+df = pd.read_csv("data/2019-2023_oyster_densities.csv")
 
 # Sidebar filters
 st.sidebar.header("Select Filters:")
@@ -76,12 +73,12 @@ years = st.sidebar.multiselect(
 # Radio button for size class filter
 size_selection = st.sidebar.radio(
     "Filter by Size Class:", 
-    options=["All", "Legal", "Sub-Legal", "Spat", "Non-spat"],
+    options=["Total", "Legal", "Sub-Legal", "Spat", "Non-spat"],
     key=41
 )
 
 size_select_dict = {
-    'All': 'total',
+    'Total': 'total',
     'Legal': 'legal',
     'Sub-Legal': 'sublegal',
     'Spat': 'spat',
@@ -129,7 +126,8 @@ fig1 = px.scatter(df_selection,
                 },
                 hover_data=['OS_Name', 'Year'],
                 size_max=15,  # Set the maximum size of the markers
-                height=600)
+                height=600,
+                width=950)
 
 # Add Lowess trendline to the plot
 fig1.add_trace(
@@ -171,12 +169,29 @@ fig1.update_layout(
                     text='Material',
                     font= dict(color='black', size=16)
                 ),
-                font=dict(color='black', size=16)  # Update font size for legend text
-            )
+                font=dict(color='black', size=16),
+                orientation="v",
+                yanchor='top',
+                y=0.95,
+                xanchor='right',
+                x=0.99,
+                bgcolor='rgba(255, 255, 255, 0.6)'
+            ),
+            margin=dict(l=0, r=0, t=0, b=0)
     )
 
 
 st.plotly_chart(fig1)
+
+
+with st.expander("Boxplot Instructions"):
+    st.info("""
+            **A boxplot can directly compare the efficacy of the various material types used in our oyster restoration efforts.**
+            **This plot will also refresh with any filters you select in the sidebar.**
+
+            **This also helps to visualize any statistical outliers. Which materials appear to be best for oysters? What about spat recruitment?**
+            """)
+
 
 fig2 = go.Figure()
 fig2 = px.box(df_selection, 
@@ -193,7 +208,8 @@ fig2 = px.box(df_selection,
                     'Consolidated Concrete':'#FF6692'
                 },
                 hover_data=['OS_Name', 'Year'],
-                height=600)
+                height=600,
+                width=950)
 
 fig2.update_traces(
     marker=dict(
@@ -222,8 +238,15 @@ fig2.update_layout(
                     text='Material',
                     font= dict(color='black', size=16)
                 ),
-                font=dict(color='black', size=16)  # Update font size for legend text
-            )
+                font=dict(color='black', size=16),
+                orientation="v",
+                yanchor='top',
+                y=0.95,
+                xanchor='right',
+                x=0.99,
+                bgcolor='rgba(255, 255, 255, 0.6)'
+            ),
+            margin=dict(l=0, r=0, t=0, b=0)
     )
 
 st.plotly_chart(fig2)
