@@ -112,7 +112,7 @@ with col1:
 
     st.markdown(
         f"""
-            <div style="text-align: center;">
+            <div style="text-align: left;">
             <p style="font-size:16px;"> In the sidebar you can also choose the different tabs to dive deeper into North Carolina's Oyster Sanctuary dataset:</p>
             </div>
             """, 
