@@ -24,7 +24,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-#st.subheader('This page is still in development')
+st.subheader('**This page is still in development**')
 
 st.markdown(
     f"""
