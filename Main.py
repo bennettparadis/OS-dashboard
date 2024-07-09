@@ -91,7 +91,27 @@ sampling_effort = {
     },
 }
 col1, col2 = st.columns(2)
+
 with col1:
+    st.markdown(
+    f"""
+    <div style="text-align: left;">
+        <p style="font-size:16px;"> <b> Select a year in the sidebar on the left to change the graphic! </b> </p>
+    <div style="text-align: left;">
+        <p style="font-size:16px;"> <b> Move your cursor over the graphic to see more info. </b></p>
+        <div style="text-align: left;">
+        <p style="font-size:16px;"> In the sidebar you can also choose the different tabs to dive deeper into North Carolina's Oyster Sanctuary dataset:</p>
+    </div>
+    """, 
+    unsafe_allow_html=True
+)
+    methods = st.page_link("pages/1_📋Methodology.py", label="Learn about our methodology", icon="📋")
+    pamlico = st.page_link("pages/2_🌍Explore Pamlico Sound.py", label="Explore the oyster sanctuaires in Pamlico Sound", icon="🌍")
+    map_views = st.page_link("pages/3_🦪View Sanctuary Maps.py", label="View the blueprints for each sanctuary", icon="🦪")
+    compare = st.page_link("pages/4_📊Compare Population Data.py", label="Compare oyster populations over time", icon="📊")
+    analyze = st.page_link("pages/5_🤿Analyze Reef Materials.py", label="Analyze the efficacy of different reef materials", icon="🤿")
+
+with col2:
     # Donut chart
     legal_sum = df_selection['legal'].sum()
     sublegal_sum = df_selection['sublegal'].sum()
@@ -111,22 +131,3 @@ with col1:
     )
     # Displaying the figure in Streamlit
     st.plotly_chart(fig)
-    
-with col2:
-    st.markdown(
-    f"""
-    <div style="text-align: left;">
-        <p style="font-size:16px;"> <b> Select a year in the sidebar on the left to change the graphic! </b> </p>
-    <div style="text-align: left;">
-        <p style="font-size:16px;"> <b> Move your cursor over the graphic to see more info. </b></p>
-        <div style="text-align: left;">
-        <p style="font-size:16px;"> In the sidebar you can also choose the different tabs to dive deeper into North Carolina's Oyster Sanctuary dataset:</p>
-    </div>
-    """, 
-    unsafe_allow_html=True
-)
-    methods = st.page_link("pages/1_📋Methodology.py", label="Learn about our methodology", icon="📋")
-    pamlico = st.page_link("pages/2_🌍Explore Pamlico Sound.py", label="Explore the oyster sanctuaires in Pamlico Sound", icon="🌍")
-    map_views = st.page_link("pages/3_🦪View Sanctuary Maps.py", label="View the blueprints for each sanctuary", icon="🦪")
-    compare = st.page_link("pages/4_📊Compare Population Data.py", label="Compare oyster populations over time", icon="📊")
-    analyze = st.page_link("pages/5_🤿Analyze Reef Materials.py", label="Analyze the efficacy of different reef materials", icon="🤿")
