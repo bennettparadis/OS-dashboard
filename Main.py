@@ -96,15 +96,31 @@ with col1:
     st.markdown(
     f"""
     <div style="text-align: left;">
-        <p style="font-size:16px;"> <b> Select a year in the sidebar on the left to change the graphic! </b> </p>
+        <p style="font-size:18px;"> <b> On this app you have the ability to interact with the Oyster Sanctuary dataset!</b> </p>
     <div style="text-align: left;">
-        <p style="font-size:16px;"> <b> Move your cursor over the graphic to see more info. </b></p>
+        <p style="font-size:18px;"> <b> Follow the steps below to get a general idea of how to interact with the different pages.</b></p>
         <div style="text-align: left;">
         <p style="font-size:16px;"> In the sidebar you can also choose the different tabs to dive deeper into North Carolina's Oyster Sanctuary dataset:</p>
     </div>
     """, 
     unsafe_allow_html=True
 )
+
+    st.info("""
+            1) Select a year in the sidebar on the left to change the graphic.
+            2) The graphic will update with the applied filter.
+            2) Move your cursor over the graphic to see more info.
+        """)
+
+        st.markdown(
+            f"""
+                <div style="text-align: left;">
+                <p style="font-size:16px;"> In the sidebar you can also choose the different tabs to dive deeper into North Carolina's Oyster Sanctuary dataset:</p>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+
     methods = st.page_link("pages/1_📋Methodology.py", label="Learn about our methodology", icon="📋")
     pamlico = st.page_link("pages/2_🌍Explore Pamlico Sound.py", label="Explore the oyster sanctuaires in Pamlico Sound", icon="🌍")
     map_views = st.page_link("pages/3_🦪View Sanctuary Maps.py", label="View the blueprints for each sanctuary", icon="🦪")
