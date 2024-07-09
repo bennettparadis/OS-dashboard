@@ -31,7 +31,7 @@ st.markdown('''
 st.markdown(
     f"""
     <div style="text-align: center;">
-        <p style="font-size:60px; font-weight: bold;">🦪 North Carolina's Oyster Sanctuary Data Dashboard 📊</p>
+        <p style="font-size:60px; font-weight: bold;">🦪 NC's Oyster Sanctuary Data Dashboard 📊</p>
     </div>
     """, 
     unsafe_allow_html=True
