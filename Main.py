@@ -95,12 +95,10 @@ col1, col2 = st.columns(2)
 with col1:
     st.markdown(
     f"""
-    <div style="text-align: left;">
+    <div style="text-align: center;">
         <p style="font-size:18px;"> <b> On this app you have the ability to interact with the Oyster Sanctuary dataset!</b> </p>
-    <div style="text-align: left;">
+    <div style="text-align: center;">
         <p style="font-size:18px;"> <b> Follow the steps below to get a general idea of how to interact with the different pages.</b></p>
-        <div style="text-align: left;">
-        <p style="font-size:16px;"> In the sidebar you can also choose the different tabs to dive deeper into North Carolina's Oyster Sanctuary dataset:</p>
     </div>
     """, 
     unsafe_allow_html=True
@@ -114,7 +112,7 @@ with col1:
 
     st.markdown(
         f"""
-            <div style="text-align: left;">
+            <div style="text-align: center;">
             <p style="font-size:16px;"> In the sidebar you can also choose the different tabs to dive deeper into North Carolina's Oyster Sanctuary dataset:</p>
             </div>
             """, 
