@@ -113,7 +113,7 @@ with col1:
     st.markdown(
         f"""
             <div style="text-align: left;">
-            <p style="font-size:16px;"> At the top of the the sidebar you can navigate to different pages & dive deeper into North Carolina's Oyster Sanctuary dataset:</p>
+            <p style="font-size:18px;"> <b >At the top of the the sidebar you can navigate to different pages & dive deeper into North Carolina's Oyster Sanctuary dataset: </b></p>
             </div>
             """, 
             unsafe_allow_html=True
