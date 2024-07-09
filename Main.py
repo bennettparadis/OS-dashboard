@@ -141,7 +141,8 @@ with col2:
         hoverlabel=dict(bgcolor='white', font=dict(color='black', size=16))
     )
     fig.update_layout(
-        title=f"Size Class Breakdown - Sampling {year}"
+        title=f"Size Class Breakdown - Sampling {year}",
+        title_x=0.5
     )
     # Displaying the figure in Streamlit
     st.plotly_chart(fig)
