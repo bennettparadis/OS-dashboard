@@ -142,7 +142,7 @@ with col2:
     )
     fig.update_layout(
         title=f"Size Class Breakdown - Sampling {year}",
-        title_x=0.5
+        title_x=0.25
     )
     # Displaying the figure in Streamlit
     st.plotly_chart(fig)
