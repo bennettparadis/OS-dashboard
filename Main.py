@@ -112,14 +112,14 @@ with col1:
             2) Move your cursor over the graphic to see more info.
         """)
 
-        st.markdown(
-            f"""
-                <div style="text-align: left;">
-                <p style="font-size:16px;"> In the sidebar you can also choose the different tabs to dive deeper into North Carolina's Oyster Sanctuary dataset:</p>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
+    st.markdown(
+        f"""
+            <div style="text-align: left;">
+            <p style="font-size:16px;"> In the sidebar you can also choose the different tabs to dive deeper into North Carolina's Oyster Sanctuary dataset:</p>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
 
     methods = st.page_link("pages/1_📋Methodology.py", label="Learn about our methodology", icon="📋")
     pamlico = st.page_link("pages/2_🌍Explore Pamlico Sound.py", label="Explore the oyster sanctuaires in Pamlico Sound", icon="🌍")
