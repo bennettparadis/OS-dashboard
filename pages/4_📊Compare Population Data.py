@@ -81,6 +81,7 @@ st.sidebar.header("Selection 1:")
 year1 = st.sidebar.select_slider(
     "Select a Year:", 
     df["Year"].unique(),
+    value=default_year,
     key=10
 )
 
@@ -111,6 +112,7 @@ st.sidebar.header("Selection 2:")
 year2 = st.sidebar.select_slider(
     "Select a Year:", 
     df["Year"].unique(),
+    value=default_year,
     key=20
 )
 
