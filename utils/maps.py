@@ -111,7 +111,7 @@ OS_dict = {
         'aggregate': '5,700',
         'established':2016,
         'recent':2016,
-        'materials':['Crushed Concrete', 'Consolidated Concrete', 'Reef Ball', 'Granite', 'Marl', 'Reef Ball'],
+        'materials':['Crushed Concrete', 'Consolidated Concrete', 'Reef Ball', 'Granite', 'Marl', 'Basalt'],
         'zoom':16.8
     },
     'Swan Island': {
