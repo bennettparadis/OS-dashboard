@@ -78,10 +78,9 @@ default_sanctuary_index2 = list(df["OS_Name"].unique()).index(default_sanctuary2
 
 st.sidebar.subheader("Use the filters on the left to make comparisons between sanctuaries, materials, and years!")
 st.sidebar.header("Selection 1:")
-year1 = st.sidebar.selectbox(
+year1 = st.sidebar.select_slider(
     "Select a Year:", 
     df["Year"].unique(),
-    index=default_year_index,
     key=10
 )
 
@@ -109,10 +108,9 @@ hist_selection1 = histdata.query(
 )
 
 st.sidebar.header("Selection 2:")
-year2 = st.sidebar.selectbox(
+year2 = st.sidebar.select_slider(
     "Select a Year:", 
     df["Year"].unique(),
-    index=default_year_index,
     key=20
 )
 
