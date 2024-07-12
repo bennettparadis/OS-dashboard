@@ -135,7 +135,7 @@ OS_dict = {
 }
 
 # Define the color mapping dictionary
-color_scale = px.colors.qualitative.G10
+color_scale = px.colors.qualitative.Plotly
 unique_materials = df['Material'].unique()
 color_discrete_map = {material: color_scale[i % len(color_scale)] for i, material in enumerate(unique_materials)}
 transparency_value = 0.7
