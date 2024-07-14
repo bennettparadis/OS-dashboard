@@ -52,7 +52,7 @@ st.subheader('Sampling Methodology')
 
 rand_select = st.container()
 
-rand_select.write("This is a test")
+rand_select.write("test")
 
 with st.expander("Random Selection"):
     st.info("""
