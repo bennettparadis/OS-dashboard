@@ -1,7 +1,9 @@
+
 # Oyster Sanctuary Monitoring Data Visualizer
+#*UNDER DEVELOPMENT* 
 Python script for an interactive streamlit app that allows users to explore and visualize NC's Oyster Sanctuary data
 
-#*UNDER DEVELOPMENT* -- draft version is available here for preview before it goes live
+[https://streamlit.app.ncos-dashboard](https://ncos-dashboard.streamlit.app/)
 
 ## Summary
 North Carolina's Division of Marine Fisheries began the Oyster Sanctuary Program to create protected artificial reefs in an effort to restore the state's subtidal oyster population. 
