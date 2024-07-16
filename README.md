@@ -1,5 +1,5 @@
 
-# Oyster Sanctuary Monitoring Data Visualizer
+# North Carolina's Oyster Sanctuary Data Visualizer
 #*UNDER DEVELOPMENT* 
 
 Python script for an interactive streamlit app that allows users to explore and visualize NC's Oyster Sanctuary data
