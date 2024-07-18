@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import statsmodels.api as sm
+from utils import text
 
 # Tab display 
 st.set_page_config(page_title="NC Oyster Sanctuary Data", page_icon=":oyster:", layout="wide")
@@ -30,8 +31,8 @@ custom_css = """
 """
 
 # Apply the custom CSS
-st.markdown(custom_css, unsafe_allow_html=True)
-
+#st.markdown(custom_css, unsafe_allow_html=True)
+text.pages_font()
 
 st.markdown(
     f"""
