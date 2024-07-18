@@ -9,40 +9,10 @@ from utils import text
 st.set_page_config(page_title="NC Oyster Sanctuary Data", page_icon=":oyster:", layout="wide")
 
 # --- HEADER & INFO TEXT ---
-st.markdown(
-    f"""
-    <div style="text-align: center;">
-        <p style="font-size:50px; font-weight: bold;">🤿Analyze Reef Materials</p>
-    </div>
-    """, 
-    unsafe_allow_html=True
-)
+text.display_text("🤿Analyze Reef Materials", font_size=50, font_weight='bold')
+text.display_text("North Carolina's oldest oyster sanctuaries are nearly 30 years old. With a variety of materials used to build the sanctuaries, knowing how these materials persist over time is important for future oyster restoration efforts. Here you can analyze the relationship of material age and oyster density using a scatterplot and a boxplot.")
 
-# Define the custom CSS for sidebar pages
-custom_css = """
-<style>
-    /* Change the color and font of the page titles in the sidebar */
-    .eczjsme13 {
-        color: #00647B !important; /* Replace with your desired color */
-        font-weight: bold !important;
-        font-size: 16px !important;
-    }
-</style>
-"""
-
-# Apply the custom CSS
-#st.markdown(custom_css, unsafe_allow_html=True)
-text.pages_font()
-
-st.markdown(
-    f"""
-    <div style="text-align: center;">
-        <p style="font-size:20px;">North Carolina's oldest oyster sanctuaries are nearly 30 years old. With a variety of materials used to build the sanctuaries, knowing how these materials persist over time is important for future oyster restoration efforts. Here you can analyze the relationship of material age and oyster density using a scatterplot and a boxplot.</p>
-    </div>
-    """, 
-    unsafe_allow_html=True
-)
-
+#Instruction text
 st.info("""
     **Analyze the past five years of oyster monitoring data by using the sidebar to set filters and interact with the graphs below.** 
 """)
@@ -58,10 +28,12 @@ with st.expander("Scatterplot Instructions"):
             **Choose to view the densities for all oysters, or only legal, sublegal, spat, or non-spat (legal + sublegal).**
 """)
 
+#import data
 df = pd.read_csv("data/2019-2023_oyster_densities.csv")
 
-# Sidebar filters
+# Sidebar setup
 st.sidebar.header("Select Filters:")
+text.pages_font()
 
 # Multiselect widget for years
 years = st.sidebar.multiselect(
@@ -251,5 +223,3 @@ fig2.update_layout(
     )
 
 st.plotly_chart(fig2)
-
-
