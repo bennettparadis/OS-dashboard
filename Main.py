@@ -1,55 +1,26 @@
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
+from utils import text
 
-st.set_page_config(page_title="NC Oyster Sanctuary Data", page_icon=":oyster:", layout="wide")
-
-# Define the custom CSS
-custom_css = """
-<style>
-    /* Change the color and font of the page titles in the sidebar */
-    .eczjsme13 {
-        color: #00647B !important; /* Replace with your desired color */
-        font-weight: bold !important;
-        font-size: 16px !important;
-    }
-</style>
-"""
-
-# Apply the custom CSS
-st.markdown(custom_css, unsafe_allow_html=True)
+text.tab_display()
+text.pages_font()
 
 # --- MAINPAGE ---
 
-st.markdown('''
-            <style>
-            body {background-color: white;
-            }
-            <style>
-            ''', unsafe_allow_html=True)
-
-st.markdown(
-    f"""
-    <div style="text-align: center;">
-        <p style="font-size:60px; font-weight: bold;">🦪 NC's Oyster Sanctuary Data Dashboard 📊</p>
-    </div>
-    """, 
-    unsafe_allow_html=True
-)
+# st.markdown('''
+#             <style>
+#             body {background-color: white;
+#             }
+#             <style>
+#             ''', unsafe_allow_html=True)
+text.display_text("🦪 NC's Oyster Sanctuary Dashboard 📊", font_size=50, font_weight='bold')
 
 st.info("**Hello and welcome to the Oyster Sanctuary Data Visualization Dashboard! The dataset featured here is part of ongoing oyster restoration and monitoring efforts in North Carolina. "
            f"If you would like to learn more about the importance of Oyster Sanctuaries, how they are built in North Carolina, and current projects, please visit the [StoryMap](https://storymaps.arcgis.com/stories/d876f9b131174f859270c600ccf3545f)!**")
 
-st.markdown(
-    f"""
-    <div style="text-align: left;">
-        <p style="font-size:20px;">In 1996, the North Carolina Division of Marine Fisheries began building artificial reefs with the specific aim of creating protected habitat for subtidal oysters. These Oyster Sanctuaries are closed to harvest with the goal of creating a network of thriving and self-sustaining oyster reefs throughout Pamlico Sound. </p>
-    <div style="text-align: left;">
-        <p style="font-size:20px;">DMF's dive team conducts annual monitoring to gather data with the aim of quantifying the performance and longevity of the sanctuaries. This dashboard allows users to explore the dataset collected from these yearly SCUBA surveys. Here you can interact with the data by choosing filters in the sidebar.</p>
-    </div>
-    """, 
-    unsafe_allow_html=True
-)
+text.display_text("In 1996, the North Carolina Division of Marine Fisheries began building artificial reefs with the specific aim of creating protected habitat for subtidal oysters. These Oyster Sanctuaries are closed to harvest with the goal of creating a network of thriving and self-sustaining oyster reefs throughout Pamlico Sound. ")
+text.display_text("DMF's dive team conducts annual monitoring to gather data with the aim of quantifying the performance and longevity of the sanctuaries. This dashboard allows users to explore the dataset collected from these yearly SCUBA surveys. Here you can interact with the data by choosing filters in the sidebar.")
 
 st.write('---')
 
@@ -66,7 +37,6 @@ year = st.sidebar.selectbox(
 df_selection = df.query(
     "Year == @year"
 )
-
 
 sampling_effort = {
     '2019': {
@@ -93,31 +63,16 @@ sampling_effort = {
 col1, col2 = st.columns(2)
 
 with col1:
-    st.markdown(
-    f"""
-    <div style="text-align: center;">
-        <p style="font-size:18px;"> <b> On this app you have the ability to interact with the Oyster Sanctuary dataset!</b> </p>
-    <div style="text-align: center;">
-        <p style="font-size:18px;"> <b> Follow the steps below to get a general idea of how to interact with the different pages.</b></p>
-    </div>
-    """, 
-    unsafe_allow_html=True
-)
-
+    text.display_text("On this app you have the ability to interact with the Oyster Sanctuary dataset!", font_size=18, align='left')
+    text.display_text("Follow the steps below to get a general idea of how to interact with the different pages.", font_size=18, align='left')
+   
     st.info("""
             1) Select a year in the sidebar on the left to change the graphic.
             2) The graphic will update with the applied filter.
             2) Move your cursor over the graphic to see more info.
         """)
 
-    st.markdown(
-        f"""
-            <div style="text-align: left;">
-            <p style="font-size:18px;"> <b >At the top of the the sidebar you can navigate to different pages & dive deeper into North Carolina's Oyster Sanctuary dataset: </b></p>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
+    text.display_text("At the top of the the sidebar you can navigate to different pages & dive deeper into North Carolina's Oyster Sanctuary dataset:", font_size=18, font_weight='bold', align='left')
 
     methods = st.page_link("pages/1_📋Methodology.py", label="Learn about our methodology", icon="📋")
     pamlico = st.page_link("pages/2_🌍Explore Pamlico Sound.py", label="Explore the oyster sanctuaires in Pamlico Sound", icon="🌍")
