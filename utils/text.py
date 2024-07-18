@@ -15,7 +15,7 @@ def display_text(content, font_size=20, font_weight= 'normal', align='center'):
         unsafe_allow_html=True,
     )
 
-#sidebar text function for pages
+#sidebar text function for pages labels/links
 # Define the custom CSS
 custom_css = """
 <style>
