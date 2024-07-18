@@ -2,48 +2,19 @@ import streamlit as st
 import pandas as pd
 import pydeck as pdk
 import geopandas as gpd
+from utils import text
 
 # Load data
 df = pd.read_csv('data/2019-2023_oyster_densities.csv')
 OSMaterial = gpd.read_file("data/OS_material_storymap.shp")
 OSBoundaries = gpd.read_file("data/permit_boundaries.shp")
 
-# Set up the Streamlit page
-st.set_page_config(page_title="NC Oyster Sanctuary Data", page_icon=":oyster:", layout="wide")
+# PAGE SETUP
+text.tab_display()
+text.display_text("🌍Explore Pamlico Sound", font_size=50, font_weight='bold')
+text.pages_font()
+text.display_text("As of 2023, North Carolina has 15 oyster sanctuaries in Pamlico Sound, providing a total of 563 acres of protected subtidal habitat. Every year NCDMF's Habitat & Enhancement dive team visits each sanctuary to collect oyster data around the reefs. Explore the map to see how oyster densities differ across Pamlico Sound over the last few years.")
 
-st.markdown(
-    f"""
-    <div style="text-align: center;">
-        <p style="font-size:50px; font-weight: bold;">🌍Explore Pamlico Sound</p>
-    </div>
-    """, 
-    unsafe_allow_html=True
-)
-
-# Define the custom CSS
-custom_css = """
-<style>
-    /* Change the color and font of the page titles in the sidebar */
-    .eczjsme13 {
-        color: #00647B !important; /* Replace with your desired color */
-        font-weight: bold !important;
-        font-size: 16px !important;
-    }
-</style>
-"""
-
-# Apply the custom CSS
-st.markdown(custom_css, unsafe_allow_html=True)
-
-
-st.markdown(
-    f"""
-    <div style="text-align: center;">
-        <p style="font-size:20px;">As of 2023, North Carolina has 15 oyster sanctuaries in Pamlico Sound, providing a total of 563 acres of protected subtidal habitat. Every year NCDMF's Habitat & Enhancement dive team visits each sanctuary to collect oyster data around the reefs. Explore the map to see how oyster densities differ across Pamlico Sound over the last few years.</p>
-    </div>
-    """, 
-    unsafe_allow_html=True
-)
 with st.expander("Instructions"):
     st.info("""
              **Click and drag the map to explore Pamlico Sound. Use the scroll-wheel to zoom in and out.**
@@ -55,7 +26,7 @@ with st.expander("Instructions"):
              **Select a year from the drop down menu in the sidebar to see how densities change over time.** 
     """)
 
-
+#SIDEBAR SETUP
 st.sidebar.subheader("Use the dropdown to select a year and explore oyster densities across the Oyster Sanctuary Network")
 default_year = 2023
 default_year_index = list(df["Year"].unique()).index(default_year)
@@ -67,6 +38,7 @@ year = st.sidebar.selectbox(
     key=30
 )
 
+#IMPORT DATA
 df_selection = df.query("Year == @year")
 
 # Remove rows with missing values in 'Latitude', 'Longitude', 'total'
