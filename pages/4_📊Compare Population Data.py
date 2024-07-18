@@ -4,9 +4,10 @@ import numpy as np
 import pandas as pd
 import geopandas as gpd
 import warnings
-from utils import *
+from utils import maps
+from utils import densityhistograms
+from utils import text
 
-text.pages_font()
 # Suppress warnings
 warnings.filterwarnings('ignore')
 
@@ -34,6 +35,7 @@ with st.expander("Instructions"):
         """)
 
 # ----- SIDE BAR -----
+text.pages_font()
 
 sanctuary_names = sorted(df["OS_Name"].unique())
 default_year = 2023
@@ -201,3 +203,5 @@ with col3:
     
     #MAP 2
     maps.display_map(sanctuary2, filtered_material2, 500, 450)
+
+
