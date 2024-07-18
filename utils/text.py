@@ -1,5 +1,9 @@
 import streamlit as st
 
+#tab display
+def tab_display():
+      st.set_page_config(page_title="NC Oyster Sanctuary Data", page_icon=":oyster:", layout="wide")
+
 #text function
 def display_text(content, font_size=20, font_weight= 'normal'):
     st.markdown(
