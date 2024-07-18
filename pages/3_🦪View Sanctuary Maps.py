@@ -5,50 +5,18 @@ import pandas as pd
 import geopandas as gpd
 import warnings
 from utils import maps
+from utils import text
 
 # Suppress warnings
 warnings.filterwarnings('ignore')
 
-# Tab display 
-st.set_page_config(page_title="NC Oyster Sanctuary Data", page_icon=":oyster:", layout="wide")
-
-#IMPORT OS DATA (densities and extraction samples)
-OSMaterial = gpd.read_file("data/OS_material_storymap.shp")
-df = pd.read_csv("data/2019-2023_oyster_densities.csv")
+#PAGE SETUP
+text.tab_display()
 
 # --- HEADER & INFO TEXT ---
-st.markdown(
-    f"""
-    <div style="text-align: center;">
-        <p style="font-size:50px; font-weight: bold;">🦪View Oyster Sanctuary Maps</p>
-    </div>
-    """, 
-    unsafe_allow_html=True
-)
-
-# Define the custom CSS
-custom_css = """
-<style>
-    /* Change the color and font of the page titles in the sidebar */
-    .eczjsme13 {
-        color: #00647B !important; /* Replace with your desired color */
-        font-weight: bold !important;
-        font-size: 16px !important;
-    }
-</style>
-"""
-
-# Apply the custom CSS
-st.markdown(custom_css, unsafe_allow_html=True)
-
-st.markdown(
-    f"""
-    <div style="text-align: center;">
-        <p style="font-size:20px;">Noth Carolina's oyster sanctuaries are large-scale restoration sites ranging from 4 to 80 acres. The sanctuaries have been built with a variety of materials such as crushed aggregate rock (marl limestone, granite, concrete, basalt), reef balls, concrete pipe, and recycled shell. Select an oyster sanctuary to view the material blueprint. </p>
-    </div>
-    """, 
-    unsafe_allow_html=True
-)
+text.display_text("🦪View Oyster Sanctuary Maps", font_size=50, font_weight='bold')
+text.pages_font()
+text.display_text("Noth Carolina's oyster sanctuaries are large-scale restoration sites ranging from 4 to 80 acres. The sanctuaries have been built with a variety of materials such as crushed aggregate rock (marl limestone, granite, concrete, basalt), reef balls, concrete pipe, and recycled shell. Select an oyster sanctuary to view the material blueprint.")
 
 with st.expander("Instructions"):
     st.info(
@@ -62,6 +30,10 @@ with st.expander("Instructions"):
     *NOTE: This geospatial data includes all materials deployed between 1996 and 2023. 
     """
     )
+
+#IMPORT OS DATA (densities and extraction samples)
+OSMaterial = gpd.read_file("data/OS_material_storymap.shp")
+df = pd.read_csv("data/2019-2023_oyster_densities.csv")
 
 # ----- SIDE BAR -----
 sanctuary_names = sorted(df["OS_Name"].unique())
