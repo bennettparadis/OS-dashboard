@@ -5,10 +5,10 @@ def tab_display():
       st.set_page_config(page_title="NC Oyster Sanctuary Data", page_icon=":oyster:", layout="wide")
 
 #text function
-def display_text(content, font_size=20, font_weight= 'normal'):
+def display_text(content, font_size=20, font_weight= 'normal', align='center'):
     st.markdown(
         f"""
-        <div style="text-align: center;">
+        <div style="text-align: {align};">
             <p style="font-size:{font_size}px;font-weight:{font_weight}">{content}</p>
         </div>
         """,
