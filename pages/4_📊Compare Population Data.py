@@ -11,13 +11,15 @@ from utils import text
 # Suppress warnings
 warnings.filterwarnings('ignore')
 
+# Tab display 
+st.set_page_config(page_title="NC Oyster Sanctuary Data", page_icon=":oyster:", layout="wide")
+
 #IMPORT OS DATA (densities and extraction samples)
 df = pd.read_csv("data/2019-2023_oyster_densities.csv")
 histdata = pd.read_csv("data/OSdata_extractions.csv")
 OSMaterial = gpd.read_file("data/OS_material_storymap.shp")
 
 # --- MAINPAGE ---
-text.tab_display()
 text.display_text("📊Compare Population Data", font_size=50, font_weight='bold')
 text.display_text("The annual dive surveys provide snapshots of the oyster populations at each sanctuary. From those data we can estimate densities and visualize population structures. We can compare how these metrics change over time and how they vary by each material. Try it out and make some comparisons of your own!")
 
@@ -201,5 +203,3 @@ with col3:
     
     #MAP 2
     maps.display_map(sanctuary2, filtered_material2, 500, 450)
-
-
