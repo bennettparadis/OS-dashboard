@@ -6,6 +6,7 @@ import geopandas as gpd
 import warnings
 from utils import maps
 from utils import densityhistograms
+from utils import text
 
 # Suppress warnings
 warnings.filterwarnings('ignore')
@@ -19,24 +20,8 @@ histdata = pd.read_csv("data/OSdata_extractions.csv")
 OSMaterial = gpd.read_file("data/OS_material_storymap.shp")
 
 # --- MAINPAGE ---
-st.markdown(
-    f"""
-    <div style="text-align: center;">
-        <p style="font-size:50px; font-weight: bold;">📊Compare Population Data</p>
-    </div>
-    """, 
-    unsafe_allow_html=True
-)
-
-st.markdown(
-    f"""
-    <div style="text-align: center;">
-        <p style="font-size:20px;">The annual dive surveys provide snapshots of the oyster populations at each sanctuary. From those data we 
-         can estimate densities and visualize population structures. We can compare how these metrics change over time and how they vary by each material. Try it out and make some comparisons of your own!</p>
-    </div>
-    """, 
-    unsafe_allow_html=True
-)
+text.display_text("📊Compare Population Data", font_size=50, font_weight='bold')
+text.display_text("The annual dive surveys provide snapshots of the oyster populations at each sanctuary. From those data we can estimate densities and visualize population structures. We can compare how these metrics change over time and how they vary by each material. Try it out and make some comparisons of your own!")
 
 with st.expander("Instructions"):
         st.info("""
@@ -50,21 +35,7 @@ with st.expander("Instructions"):
         """)
 
 # ----- SIDE BAR -----
-# Define the custom CSS
-custom_css = """
-<style>
-    /* Change the color and font of the page titles in the sidebar */
-    .eczjsme13 {
-        color: #00647B !important; /* Replace with your desired color */
-        font-weight: bold !important;
-        font-size: 16px !important;
-    }
-</style>
-"""
-
-# Apply the custom CSS
-st.markdown(custom_css, unsafe_allow_html=True)
-
+text.pages_font()
 
 sanctuary_names = sorted(df["OS_Name"].unique())
 default_year = 2023
@@ -232,5 +203,3 @@ with col3:
     
     #MAP 2
     maps.display_map(sanctuary2, filtered_material2, 500, 450)
-
-
