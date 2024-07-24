@@ -53,7 +53,7 @@ with tab1:
     
     with col2:
         dive_team = Image.open('imgs/diveteam.jpg')
-        dive_team_cap = ("NCDMF's ")
+        dive_team_cap = ("NCDMF's Habitat & Enhancement Dive team conducts annual monitoring efforts of the Oyster Sanctuaries. Since revamping the sampling protocol in 2018, this effort typically involves visiting 14 sanctuaries, diving at 130+ locations, and measuring 20,000 oysters between June and August.")
         display_image(dive_team, 600, dive_team_cap)
 
 with tab2:
@@ -82,16 +82,6 @@ with tab3:
         text.display_text("The example on the right shows the sampling map for Swan Island. At this oyster sanctuary, divers collected data from 8 random points on marl limestone ridges and 7 points on granite ridges for a total of 15 samples. These points are marked with a polyball buoy tethered to a weighted shackle. Divers follow the line down to investigate the site and collect data." ,align='left')
         text.display_text("For every day spent at an oyster sanctuary, water quality data is collected using a handheld YSI. This includes water temperature, salinity, and dissolved oxygen, which are recorded both at the surface and near the bottom. ", align='left')
         text.display_text("Depending on the material type, the divers will either follow protocol for collecting strictly observational data or will excavate material with any oysters attached.", align='left')
-        # Before any diver gets in the water, sampling maps are created to plan where oyster data will be collected on each sanctuary. The number of samples is determined by the number of materials and the amount of each material present on each sanctuary.
-    
-        #     A minimum of 4 dives are conducted for each material type. If there is more than 2 acres covered by a material, then 5 samples are collected.  And so on. 
-
-        #     Dive sites are randomly selected using geospatial software (ESRI's ArcGIS Pro). Once in the field, divers and support staff will mark the site with an anchored polyball. 
-
-        #     Each day our dive team visits an oyster sanctuary, they record salinity, dissolved oxygen, and temperature levels via handheld YSI at the surface and at the bottom.
-
-        #     Additionally, divers collect observational data on every site. This includes sample depth, sedimentation level, boring sponge (presence/absence), observed fish and invertebrates, and percent coverage for oysters and mussels.
-        #     """)
     
     with col2:
         swan_map = Image.open('imgs/SwanIsland2023.jpg')
@@ -122,7 +112,7 @@ with tab5:
     col1,col2 = st.columns(2)
     with col1:
         text.display_text("Throughout the history of the Oyster Sanctuary Program, various types of crushed aggregate rock have been used in the construction process. These include marl limestone, granite, and concrete. Recycled oyster and surf clam shells have also been used to 'refurbish' some ares of older sanctuaries. All of these material types can be easily dug up or excavated by divers and brought to the surface." , align= 'left')
-        text.display_text("Divers collect all the observational data including percent coverage estimates before excavating material. Using a quarter meter quadrat, divers standardize the sample size. Any material and oysters in the quadrat are removed and placed into a basket which is tethered to the boat. Once the sample has been collected, the surface crew are signalled (three tugs on the line) to bring up the basket. The oyster rock is then pulled up to the boat where it will be processed", align='left')
+        text.display_text("Divers collect all the observational data including percent coverage estimates before excavating material. Using a quarter meter quadrat, divers standardize the sample size. Any material and oysters in the quadrat are removed and placed into a basket which is tethered to the boat. Once the sample has been collected, the surface crew are signalled (three tugs on the line) to bring up the basket. The oyster rock is then pulled up to the boat where it will be processed.", align='left')
         text.display_text("", align='left')
 
     with col2:
@@ -130,3 +120,6 @@ with tab5:
         exc_cap = "Text"
 
         display_image(exc_sheet, 600, exc_cap)
+
+
+
