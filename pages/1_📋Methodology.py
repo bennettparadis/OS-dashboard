@@ -4,6 +4,30 @@ from PIL import Image
 import io
 import base64
 
+def display_image(image, new_width, caption):
+        # Resize the image
+        width, height = image.size
+        new_height = int((new_width / width) * height)
+        image_resized = image.resize((new_width, new_height))
+
+        # Save the resized image to a BytesIO object
+        image_bytes = io.BytesIO()
+        image_resized.save(image_bytes, format='PNG')
+        image_bytes.seek(0)
+
+        # Convert image bytes to base64
+        image_base64 = base64.b64encode(image_bytes.read()).decode("utf-8")
+
+        # Define the image and caption HTML template
+        image_html = f"""
+            <div style="text-align: center;">
+                <img src="data:image/png;base64,{image_base64}" width="{new_width}" height="{new_height}" />
+                <p style="width: {new_width}px; margin: 0 auto;">{caption}</p>
+            </div>
+        """
+        # Display the image and caption using st.markdown
+        st.markdown(image_html, unsafe_allow_html=True)
+
 #PAGE SETUP
 text.tab_display()
 text.display_text("📋Methodology", font_size=50, font_weight='bold')
@@ -11,88 +35,98 @@ text.pages_font()
 
 text.display_text("This page is dedicated to providing a detailed walkthrough of the methodology used to collect the data featured on this app. The annual scuba monitoring effort of the oyster sanctuaries has resulted in a long-term dataset of oyster density metrics and population data, which is used in the development of future oyster restoration projects.")
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["Monitoring Objectives", "Mapping with Sonar", "Sampling Design", "Excavation Dives", "Observational Dives"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["Monitoring Objectives", "Mapping with Sonar", "Sampling Design", "Observational Data", "Excavated Samples"])
 
 with tab1:
-    st.subheader('Monitoring Objectives')
-    text.display_text('Evaluating performance of an oyster sanctuary involves monitoring the long-term stability of reef materials and quantifying their ability as reef habitat to host oysters over time. Monitoring oyster sanctuaries can benefit restoration practices by demonstrating which factors contribute to cost-effective restoration such as which materials yield consistently high oyster densities over time.', align='left')
-    text.display_text("""This monitoring program seeks to evaluate performance of oyster sanctuaries within the context of the following questions:
+    col1, col2 = st.columns(2)
+    with col1:
+        st.subheader('Monitoring Objectives')
+        text.display_text('Evaluating performance of an oyster sanctuary involves monitoring the long-term stability of reef materials and quantifying their ability as reef habitat to host oysters over time. Monitoring oyster sanctuaries can benefit restoration practices by demonstrating which factors contribute to cost-effective restoration such as which materials yield consistently high oyster densities over time.', align='left')
+        text.display_text("""The primary objectives of this monitoring program are as follows:
 
-    1)	Is the material stable and durable over time?
-    2)	Is the sanctuary meeting its intended function as a persistent source of oyster larvae?
-    3)	Do some materials perform better over time than others for oyster recruitment and survivorship?
+        1)	Evaluate material performance as oyster habitat.
+        2)	Evaluate material long-term durability and stability. 
+        3)	Evaluate overall material performance for reproductive potential and larval recruitment
+        4)	Evaluate oyster demographic trends at each sanctuary through time
 
-
-    """, align='left')
+        """, align='left')
+    
+    with col2:
+        dive_team = Image.open('imgs/diveteam.jpg')
+        dive_team_cap = ("NCDMF's ")
+        display_image(dive_team, 600, dive_team_cap)
 
 with tab2:
     st.subheader('Obtaining Reef Footprint using Side-Scan Sonar')
     col1, col2 = st.columns(2)
     with col1:
         text.display_text('NCDMF utilizes an Edgetech 6205 system to collect side-scan and multibeam sonar data which are used to image artificial reefs, including the oyster sanctuaries.', align='left')
-        text.display_text('As the survey vessel follows transect lines along the reef site, the sensors of the sonar equipment send and receive acoustic pulses. These sonar waves are sent out in a fan-shaped beam (similar to a flashlight) until they reach the seafloor. The waves will bounce of the bottom substrate and behave differently depending on where they land.', align='left') 
-        text.display_text('The depth, or bathymetry, is computed by the time it takes for an acoustic wave to travel down, hit the bottom, and return to the boat. The deeper the water body, the longer it will take for a sound wave to return to the vessel. On the right is a bathymetric map of Cedar Island. There the height of the marl ridges can easily be seen. At this 75-acre site, over 130 ridges, each ~200 ft long and 4-8 ft tall, provide oysters an elevated place to settle and grow.',align='left')
-        text.display_text('Once a sanctuary has been mapped, the overall material footprint can be calculated. This is the area covered by alternative substrates (marl, granite, etc.) used to build a sanctuary.', align='left')
+        text.display_text('As the survey vessel follows transect lines along the reef site, the sensors of the sonar equipment send and receive acoustic pulses. These sonar waves are sent out in a fan-shaped beam (similar to a flashlight) until they reach the seafloor. The waves will bounce off the bottom substrate and behave differently depending on the hardness of the bottom substrate.', align='left') 
+        text.display_text('The depth, or bathymetry, is computed by the time it takes for an acoustic wave to travel down, hit the bottom, and return to the boat. The deeper the water body, the longer it will take for a sound wave to return to the vessel. On the right is a bathymetric map of Cedar Island. There the height of the marl ridges can easily be seen. At this 75-acre oyster sanctuary, there are 132 ridges, each ~200 ft long, 35 ft wide, and 4-8 ft tall. The vertical relief provided by these ridges provides oysters an elevated place to settle and grow.',align='left')
+        text.display_text('Once a sanctuary has been mapped, the overall material footprint can be calculated. This is the area covered by alternative substrates (marl, granite, etc.) used in building a sanctuary.', align='left')
 
     with col2:
         # Load an image from file
-        bathymap = Image.open('imgs/Cedar_Island_final_bathy2023.jpg')
+        bathy_map = Image.open('imgs/Cedar_Island_final_bathy2023.jpg')
+        bathy_cap = "Material footprint and bathymetric map of Cedar Island Oyster Sanctuary. This 75-acre site was build with mostly class B limestone marl and was completed in 2023."
 
-        # Resize the image
-        width, height = bathymap.size
-        new_width = 400
-        new_height = int((new_width / width) * height)
-        bathymap_resized = bathymap.resize((new_width, new_height))
-
-        # Save the resized image to a BytesIO object
-        bathy_bytes = io.BytesIO()
-        bathymap_resized.save(bathy_bytes, format='PNG')
-        bathy_bytes.seek(0)
-
-        # Convert image bytes to base64
-        bathy_base64 = base64.b64encode(bathy_bytes.read()).decode("utf-8")
-
-        # Define the image and caption HTML template
-        bathy_html = f"""
-            <div style="text-align: center;">
-                <img src="data:image/png;base64,{bathy_base64}" width="{new_width}" height="{new_height}" />
-                <p style="width: {new_width}px; margin: 0 auto;">Material footprint and bathymetric map of Cedar Island Oyster Sanctuary. This 75-acre site was build with mostly class B limestone marl and was completed in 2023.</p>
-            </div>
-        """
-
-        # Display the image and caption using st.markdown
-        st.markdown(bathy_html, unsafe_allow_html=True)
-
-
-#rand_select = st.container()
-
-#text.display_text("Once the Sanctuaries have been mapped out, the dive team has a reef 'footprint' that can be used as reference for where to visit and sample. Each Sanctuary may have a few different materials on it. Planning a survey begins with selecting randomly generated points using geospatial software. The team will visit a minimum of four sites for each material type. The sample size increases as the material footprint increases. For instance, Cedar Island...")
-
+        display_image(bathy_map, 450, bathy_cap)
+ 
 
 with tab3:
     st.subheader("Sampling Design")
-    st.info("""
-            Before any diver gets in the water, sampling maps are created to plan where oyster data will be collected on each sanctuary. The number of samples is determined by the number of materials and the amount of each material present on each sanctuary.
+    col1,col2 = st.columns(2)
+    with col1:
+        text.display_text("With the oyster sanctuaries mapped out, the total material footprint can be determined using geospatial software (ESRI's ArcGIS Pro). Using the same software, random points can be generated on each of the different material types within a sanctuary.", align='left')
+        text.display_text("The number of samples points is proportionate to the total area covered by each material. A minimum of 4 samples are collected for each material type that doesn't exceed 2 acres in cumulative coverage. For 2-3 acres of coverage, 5 samples are collected. Between 3-4 acres, 6 samples, and so on. A maximum of 8 samples are collected for materials that exceed 5 acres in total footprint.", align='left')
+        text.display_text("The example on the right shows the sampling map for Swan Island. At this oyster sanctuary, divers collected data from 8 random points on marl limestone ridges and 7 points on granite ridges for a total of 15 samples. These points are marked with a polyball buoy tethered to a weighted shackle. Divers follow the line down to investigate the site and collect data." ,align='left')
+        text.display_text("For every day spent at an oyster sanctuary, water quality data is collected using a handheld YSI. This includes water temperature, salinity, and dissolved oxygen, which are recorded both at the surface and near the bottom. ", align='left')
+        text.display_text("Depending on the material type, the divers will either follow protocol for collecting strictly observational data or will excavate material with any oysters attached.", align='left')
+        # Before any diver gets in the water, sampling maps are created to plan where oyster data will be collected on each sanctuary. The number of samples is determined by the number of materials and the amount of each material present on each sanctuary.
     
-            A minimum of 4 dives are conducted for each material type. If there is more than 2 acres covered by a material, then 5 samples are collected.  And so on. 
+        #     A minimum of 4 dives are conducted for each material type. If there is more than 2 acres covered by a material, then 5 samples are collected.  And so on. 
 
-            Dive sites are randomly selected using geospatial software (ESRI's ArcGIS Pro). Once in the field, divers and support staff will mark the site with an anchored polyball. 
+        #     Dive sites are randomly selected using geospatial software (ESRI's ArcGIS Pro). Once in the field, divers and support staff will mark the site with an anchored polyball. 
 
-            Each day our dive team visits an oyster sanctuary, they record salinity, dissolved oxygen, and temperature levels via handheld YSI at the surface and at the bottom.
+        #     Each day our dive team visits an oyster sanctuary, they record salinity, dissolved oxygen, and temperature levels via handheld YSI at the surface and at the bottom.
 
-            Additionally, divers collect observational data on every site. This includes sample depth, sedimentation level, boring sponge (presence/absence), observed fish and invertebrates, and percent coverage for oysters and mussels.
-            """)
+        #     Additionally, divers collect observational data on every site. This includes sample depth, sedimentation level, boring sponge (presence/absence), observed fish and invertebrates, and percent coverage for oysters and mussels.
+        #     """)
+    
+    with col2:
+        swan_map = Image.open('imgs/SwanIsland2023.jpg')
+        swan_cap = "The map used to collect oyster samples at randomly generated points along Swan Island. The number of samples collected by divers ranges between 4 and 8 for each material type and is determined by material footprint acreage."
+
+        display_image(swan_map, 800, swan_cap)
 
 with tab4:
-    st.subheader("Excavation Dives")
+    st.subheader("Observational Data")
+    col1,col2 = st.columns(2)
+
+    with col1:
+        text.display_text("At every sample site, divers collect a series of observational data. This includes recording the sample depth & total depth (to estimate relief), visual inspection of percent cover for oysters, mussels, and algae, and observations for sedimentation, boring sponge, and observed fishes. Visibility is often limiting (usually less than 5 ft) which can add another layer of diffuclty during sampling efforts.", align='left')
+        text.display_text("For materials that cannot be brought to the surface (reef balls, consolidated concrete pipes, large basalt), counting and measuring oysters cannot be done on SCUBA. Instead, a quadrat with a 5x5 grid is used to estimate percent cover. Within this grid are 25 points of intersection. Each instance of an oyster (or mussel) under a point of intersection.",align='left') #represents 4% of the sample quadrat. , this reason, collecting percent coverage on all sites allows the Sanctuary Program to compare  density. Percent cover is also estimated on excavated samples an")
+        grid_quad = Image.open('imgs/GridQuad.jpg')
+        grid_cap = "Text"
+        display_image(grid_quad, 450, grid_cap)
+    with col2:
+        
+        obs_sheet = Image.open('imgs/OSDataSheetObs.jpg')
+        obs_cap = "Text"
+        
+        display_image(obs_sheet, 600, obs_cap)
+
 
 with tab5:
-    st.subheader("Observation Dives")
+    st.subheader("Excavated Samples")
+    col1,col2 = st.columns(2)
+    with col1:
+        text.display_text("Throughout the history of the Oyster Sanctuary Program, various types of crushed aggregate rock have been used in the construction process. These include marl limestone, granite, and concrete. Recycled oyster and surf clam shells have also been used to 'refurbish' some ares of older sanctuaries. All of these material types can be easily dug up or excavated by divers and brought to the surface." , align= 'left')
+        text.display_text("Divers collect all the observational data including percent coverage estimates before excavating material. Using a quarter meter quadrat, divers standardize the sample size. Any material and oysters in the quadrat are removed and placed into a basket which is tethered to the boat. Once the sample has been collected, the surface crew are signalled (three tugs on the line) to bring up the basket. The oyster rock is then pulled up to the boat where it will be processed", align='left')
+        text.display_text("", align='left')
 
-# with st.expander("Excavation samples"):
-#     st.info("""
-#             Certain materials are relatively easy for divers to remove from the reef. Various aggregate rocks have been used to build the sanctuaries and are typically the site of a basketball (Class B). 
-#             These include limestone marl, crushed granite, crushed concrete, and basalt. Various types of recycled shell were used at one point to 'refurbish' older sites. This included oyster shell and surf clam shell; however, these shells did not have the same longevity as other materials.
-            
-#             When diving on these types of materials, divers are able to excavate the material and attached oysters by hand. Divers use a 1/4 square meter quadrat and remove the top 15-20cm to standardize the amount of material excavated. The oysters and rock are put into a tethered basket, which is then brought up to the boat. At the surface, the first 400 oysters are measured. The remaining sample is counted up. 
-#             """)
+    with col2:
+        exc_sheet = Image.open('imgs/OSDataSheetExc.jpg')
+        exc_cap = "Text"
+
+        display_image(exc_sheet, 600, exc_cap)
