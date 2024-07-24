@@ -16,12 +16,12 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["Monitoring Objectives", "Mapping with S
 with tab1:
     st.subheader('Monitoring Objectives')
     text.display_text('Evaluating performance of an oyster sanctuary involves monitoring the long-term stability of reef materials and quantifying their ability as reef habitat to host oysters over time. Monitoring oyster sanctuaries can benefit restoration practices by demonstrating which factors contribute to cost-effective restoration such as which materials yield consistently high oyster densities over time.', align='left')
-    text.display_text("""The primary objectives of this monitoring program are as follows:
+    text.display_text("""This monitoring program seeks to evaluate performance of oyster sanctuaries within the context of the following questions:
 
-    1)	Evaluate material performance as oyster habitat.
-    2)	Evaluate material long-term durability and stability. 
-    3)	Evaluate overall material performance for reproductive potential and larval recruitment
-    4)	Evaluate oyster demographic trends at each sanctuary through time
+    1)	Is the material stable and durable over time?
+    2)	Is the sanctuary meeting its intended function as a persistent source of oyster larvae?
+    3)	Do some materials perform better over time than others for oyster recruitment and survivorship?
+
 
     """, align='left')
 
