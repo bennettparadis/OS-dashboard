@@ -8,13 +8,13 @@ text.pages_font()
 
 # --- MAINPAGE ---
 
-text.display_text("🦪 NC's Oyster Sanctuary Dashboard 📊", font_size=50, font_weight='bold')
+text.display_text("🦪 NC's Oyster Sanctuary Data Explorer 📊", font_size=50, font_weight='bold')
 
-st.info("**Hello and welcome to the Oyster Sanctuary Data Visualization Dashboard! The dataset featured here is part of ongoing oyster restoration and monitoring efforts in North Carolina. "
+st.info("**Hello and welcome to the Oyster Sanctuary Data Explorer! The dataset featured here is part of ongoing oyster restoration and monitoring efforts in North Carolina. "
            f"If you would like to learn more about the importance of Oyster Sanctuaries, how they are built in North Carolina, and current projects, please visit the [StoryMap](https://storymaps.arcgis.com/stories/d876f9b131174f859270c600ccf3545f)!**")
 
 text.display_text("In 1996, the North Carolina Division of Marine Fisheries began building artificial reefs with the specific aim of creating protected habitat for subtidal oysters. These Oyster Sanctuaries are closed to harvest with the goal of creating a network of thriving and self-sustaining oyster reefs throughout Pamlico Sound. ")
-text.display_text("DMF's dive team conducts annual monitoring to gather data with the aim of quantifying the performance and longevity of the sanctuaries. This dashboard allows users to explore the dataset collected from these yearly SCUBA surveys. Here you can interact with the data by choosing filters in the sidebar.")
+text.display_text("DMF's dive team conducts annual monitoring to gather data with the aim of quantifying the performance & longevity of the sanctuaries. This dashboard allows users to explore the dataset collected from these yearly SCUBA surveys. Take a look below to get started!")
 
 st.write('---')
 
