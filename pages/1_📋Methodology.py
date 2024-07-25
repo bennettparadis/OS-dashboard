@@ -80,7 +80,6 @@ with tab3:
         text.display_text("With the oyster sanctuaries mapped out, the total material footprint can be determined using geospatial software (ESRI's ArcGIS Pro). Using the same software, random points can be generated on each of the different material types within a sanctuary.", align='left')
         text.display_text("The number of samples points is proportionate to the total area covered by each material. A minimum of 4 samples are collected for each material type that doesn't exceed 2 acres in cumulative coverage. For 2-3 acres of coverage, 5 samples are collected. Between 3-4 acres, 6 samples, and so on. A maximum of 8 samples are collected for materials that exceed 5 acres in total footprint.", align='left')
         text.display_text("The example on the right shows the sampling map for Swan Island. At this oyster sanctuary, divers collected data from 8 random points on marl limestone ridges and 7 points on granite ridges for a total of 15 samples. These points are marked with a polyball buoy tethered to a weighted shackle. Divers follow the line down to investigate the site and collect data." ,align='left')
-        text.display_text("For every day spent at an oyster sanctuary, water quality data is collected using a handheld YSI. This includes water temperature, salinity, and dissolved oxygen, which are recorded both at the surface and near the bottom. ", align='left')
         text.display_text("Depending on the material type, the divers will either follow protocol for collecting strictly observational data or will excavate material with any oysters attached.", align='left')
     
     with col2:
@@ -115,7 +114,9 @@ with tab5:
         text.display_text("Divers collect all the observational data including percent coverage estimates before excavating material. A 1/4 m² PVC quadrat is placed in the same area as the grid quadrat. Any material and oysters in the quadrat are removed and placed into a basket which is tethered to the boat. Once the sample has been collected, the surface crew are signalled (three tugs on the line) to bring up the basket. The oyster rock is then pulled up to the boat where it will be processed.", align='left')
         text.display_text("On the boat, crew take a closer look at the oysters and also look for boring sponge. To get an idea of the size class structure within a sample the first 400 oysters are measured by their left valve length/height with calipers to the nearest mm. If there are more than 400 oysters, the remaining are counted. The total number of oysters in a sample multiplied by four gives an estimate of density (oysters/m²)." , align='left')
         text.display_text("Any oysters that are open, attatched at the hinge, and missing the meat inside are considered 'boxes'. Boxes are also measured but their lengths are recorded in the last columns of the excavation data sheet. ",align='left')
+        text.display_text("For every day spent at an oyster sanctuary, water quality data is collected using a handheld YSI. This includes water temperature, salinity, and dissolved oxygen, which are recorded both at the surface and near the bottom. ", align='left')
 
+        
     with col2:
         oyster_shell = Image.open('imgs/LVH.jpg')
         oyster_shell_cap = "An illustration for measuring shell height on an oyster."
