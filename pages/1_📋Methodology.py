@@ -97,12 +97,12 @@ with tab4:
         text.display_text("At every sample site, divers collect a series of observational data. This includes recording the sample depth & total depth (to estimate relief), visual inspection of percent cover for oysters, mussels, and algae, and observations for sedimentation, boring sponge, and observed fishes. Visibility is often limiting (usually less than 5 ft) which can add another layer of diffuclty during sampling efforts.", align='left')
         text.display_text("For materials that cannot be brought to the surface (reef balls, consolidated concrete pipes, large basalt), counting and measuring oysters cannot be done on SCUBA. Instead, a 1/4 m² quadrat with a 5x5 grid is used to estimate percent cover. Within this grid are 25 points of intersection. Each instance of an oyster (or mussel) under a point of intersection.",align='left') #represents 4% of the sample quadrat. , this reason, collecting percent coverage on all sites allows the Sanctuary Program to compare  density. Percent cover is also estimated on excavated samples an")
         grid_quad = Image.open('imgs/GridQuad.jpg')
-        grid_cap = "Text"
+        grid_cap = "A 1/4 m² quadrat used to estimate percent cover for oysters, mussels, and algae. In this visualization, any oysters observed under an intersecting node are counted on this 5x5 grid."
         display_image(grid_quad, 450, grid_cap)
     with col2:
         
         obs_sheet = Image.open('imgs/OSDataSheetObs.jpg')
-        obs_cap = "Text"
+        obs_cap = "Data sheet for strictly observational dive sites where material cannot be brought to the surface for further examination."
         
         display_image(obs_sheet, 600, obs_cap)
 
@@ -127,4 +127,4 @@ with tab5:
         display_image(exc_sheet, 600, exc_cap)
 
     # with st.expander("Subsampling Rationale"):
-    #     st.write("ds")
+    #     st.write("To be added later...")
