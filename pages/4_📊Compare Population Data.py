@@ -39,12 +39,12 @@ text.pages_font()
 
 sanctuary_names = sorted(df["OS_Name"].unique())
 default_year = 2023
-default_sanctuary1 = "Neuse River"
-default_sanctuary2 = "Middle Bay"
+default_sanctuary1 = "Raccoon Island"
+default_sanctuary2 = "West Bay"
 
-default_year_index = list(df["Year"].unique()).index(default_year)
-default_sanctuary_index1 = list(df["OS_Name"].unique()).index(default_sanctuary1)
-default_sanctuary_index2 = list(df["OS_Name"].unique()).index(default_sanctuary2)
+default_year_index = sorted(df["Year"].unique()).index(default_year)
+default_sanctuary_index1 = sorted(df["OS_Name"].unique()).index(default_sanctuary1)
+default_sanctuary_index2 = sorted(df["OS_Name"].unique()).index(default_sanctuary2)
 
 
 st.sidebar.subheader("Use the filters on the left to make comparisons between sanctuaries, materials, and years!")
