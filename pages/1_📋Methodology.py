@@ -93,10 +93,10 @@ with tab4:
     col1,col2 = st.columns(2)
 
     with col1:
-        text.display_text("At every sample site, divers collect a series of observational data. This includes recording the sample depth & total depth (to estimate relief), visual inspection of percent cover for oysters, mussels, and algae, and observations for sedimentation, boring sponge, and observed fishes. Visibility is often limiting (usually less than 5 ft) which can add another layer of diffuclty during sampling efforts.", align='left')
-        text.display_text("For materials that cannot be brought to the surface (reef balls, consolidated concrete pipes, large basalt), counting and measuring oysters cannot be done on SCUBA. Instead, a 1/4 m² quadrat with a 5x5 grid is used to estimate percent cover. Within this grid are 25 points of intersection. Each instance of an oyster (or mussel) under a point of intersection.",align='left') #represents 4% of the sample quadrat. , this reason, collecting percent coverage on all sites allows the Sanctuary Program to compare  density. Percent cover is also estimated on excavated samples an")
+        text.display_text("At every sample site, divers collect a series of observational data. This includes recording the sample depth & total depth (to estimate relief), visual inspection of percent cover for oysters, mussels, and algae, and observations for sedimentation, boring sponge, and observed fishes. Visibility is often limited to 5 ft (or less!) which can add another layer of diffuclty during sampling efforts.", align='left')
+        text.display_text("For materials that cannot be brought to the surface (reef balls, consolidated concrete pipes, large basalt), counting and measuring oysters cannot be done on SCUBA. Instead, a 1/4 m² PVC quadrat with a 5x5 grid is used to estimate percent cover. Within this grid are 25 points of intersection. Each instance of an oyster (or mussel) under a point of intersection represents 4% of the quadrat area. This data is collected at all sites and is compared to excavated samples for estimating oyster density at observational sites.",align='left') 
         grid_quad = Image.open('imgs/GridQuad.jpg')
-        grid_cap = "A 1/4 m² quadrat used to estimate percent cover for oysters, mussels, and algae. In this visualization, any oysters observed under an intersecting node are counted on this 5x5 grid."
+        grid_cap = "A 1/4 m² PVC quadrat is used to estimate percent cover for oysters, mussels, and algae. In this visualization, any oysters observed under an intersecting node are counted on this 5x5 grid."
         display_image(grid_quad, 450, grid_cap)
     with col2:
         
