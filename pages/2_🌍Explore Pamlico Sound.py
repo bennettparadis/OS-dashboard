@@ -109,5 +109,5 @@ st.pydeck_chart(
         },
         layers=[text_layer, density_layer, material_layer],
         tooltip=tooltip  # Add the tooltip configuration
-    )
+    ), use_container_width=True
 )
