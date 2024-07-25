@@ -154,7 +154,7 @@ fig1.update_layout(
     )
 
 
-st.plotly_chart(fig1)
+st.plotly_chart(fig1, use_container_width=True)
 
 
 with st.expander("Boxplot Instructions"):
@@ -222,4 +222,4 @@ fig2.update_layout(
             margin=dict(l=0, r=0, t=0, b=0)
     )
 
-st.plotly_chart(fig2)
+st.plotly_chart(fig2, use_container_width=True)
