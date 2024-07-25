@@ -103,7 +103,7 @@ def make_histogram(data_selection, histogram_df, max_y):
             yref="y"
         )
 
-        st.plotly_chart(hist_plot, use_container_width=False)
+        st.plotly_chart(hist_plot, use_container_width=True)
     
     else:
         st.warning("No population data available.")
