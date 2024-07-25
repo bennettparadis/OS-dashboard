@@ -75,7 +75,7 @@ with tab2:
 
 with tab3:
     st.subheader("Sampling Design")
-    col1,col2 = st.columns(2)
+    col1,col2 = st.columns([0.8,1])
     with col1:
         text.display_text("With the oyster sanctuaries mapped out, the total material footprint can be determined using geospatial software (ESRI's ArcGIS Pro). Using the same software, random points can be generated on each of the different material types within a sanctuary.", align='left')
         text.display_text("The number of samples points is proportionate to the total area covered by each material. A minimum of 4 samples are collected for each material type that doesn't exceed 2 acres in cumulative coverage. For 2-3 acres of coverage, 5 samples are collected. Between 3-4 acres, 6 samples, and so on. A maximum of 8 samples are collected for materials that exceed 5 acres in total footprint.", align='left')
