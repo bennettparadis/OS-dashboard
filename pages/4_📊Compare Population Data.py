@@ -31,7 +31,7 @@ with st.expander("Instructions"):
                     
             **Below the histograms you can also see a map & site info for additional comparisons.**
         
-            Want some examples? Try comparing **Swan Island** in **2022 & 2023**! Take it another step and choose **Swan Island 2023** for both selections, but compare **granite** & **marl**. How do the years and materials compare?
+            Want some examples? Try comparing **Swan Island** in **2022 & 2023**. Take it another step and choose **Swan Island 2023** for both selections, but compare **granite** & **marl**. How do the years and materials compare?
         """)
 
 # ----- SIDE BAR -----
