@@ -8,12 +8,6 @@ text.pages_font()
 
 # --- MAINPAGE ---
 
-# st.markdown('''
-#             <style>
-#             body {background-color: white;
-#             }
-#             <style>
-#             ''', unsafe_allow_html=True)
 text.display_text("🦪 NC's Oyster Sanctuary Dashboard 📊", font_size=50, font_weight='bold')
 
 st.info("**Hello and welcome to the Oyster Sanctuary Data Visualization Dashboard! The dataset featured here is part of ongoing oyster restoration and monitoring efforts in North Carolina. "
@@ -26,7 +20,7 @@ st.write('---')
 
 st.sidebar.success("Choose how you want to explore the dataset!")
 
-df = pd.read_csv('data/2019-2023_oyster_densities.csv')
+df = pd.read_csv('data/OSdata_extractions.csv')
 
 year = st.sidebar.selectbox(
     "Select a Year:", 
@@ -82,9 +76,10 @@ with col1:
 
 with col2:
     # Donut chart
-    legal_sum = df_selection['legal'].sum()
-    sublegal_sum = df_selection['sublegal'].sum()
-    spat_sum = df_selection['spat'].sum()
+    value_counts = df_selection['Size_Class'].value_counts()
+    legal_sum = value_counts['Legal']
+    sublegal_sum = value_counts['Sub-Legal']
+    spat_sum = value_counts['Spat']
 
     labels = ['Legal (>75mm)', 'Sublegal (26mm< x <76mm)', 'Spat (<26mm)']
     values = [legal_sum, sublegal_sum, spat_sum]
@@ -93,12 +88,23 @@ with col2:
     )
     fig.update_traces(
         marker=dict(colors=['#636EFA', '#EF553B', '#00CC96'], line=dict(color='black', width=2)),
-        hoverlabel=dict(bgcolor='white', font=dict(color='black', size=16))
+        hoverlabel=dict(bgcolor='white', font=dict(color='black', size=16)),
+        textfont=dict(size=18)
     )
-           
     fig.update_layout(
-        title=f"Size Class Breakdown - Sampling {year}",
-        title_x=0.25,
+        title=dict(
+            text=f"Size Class Breakdown - Sampling {year}",
+            x=0.25,
+            font=dict(size=24)
+        ),
+        legend=dict(
+            title = dict(
+                text = "Oyster Size Classes",
+                font=dict(size=18, color = 'black')),
+            font=dict(size=18)
+        )
     )
-    # Displaying the figure in Streamlit
+
+     # Displaying the figure in Streamlit
     st.plotly_chart(fig)
+    text.display_text("This donut chart illustrates how many legal, sublegal, and spat oysters were sampled during the annual monitoring of North Carolina's oyster sanctuaries. Select a year in the side bar to change the data.")
