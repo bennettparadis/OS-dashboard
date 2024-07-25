@@ -95,7 +95,7 @@ with tab4:
 
     with col1:
         text.display_text("At every sample site, divers collect a series of observational data. This includes recording the sample depth & total depth (to estimate relief), visual inspection of percent cover for oysters, mussels, and algae, and observations for sedimentation, boring sponge, and observed fishes. Visibility is often limiting (usually less than 5 ft) which can add another layer of diffuclty during sampling efforts.", align='left')
-        text.display_text("For materials that cannot be brought to the surface (reef balls, consolidated concrete pipes, large basalt), counting and measuring oysters cannot be done on SCUBA. Instead, a quadrat with a 5x5 grid is used to estimate percent cover. Within this grid are 25 points of intersection. Each instance of an oyster (or mussel) under a point of intersection.",align='left') #represents 4% of the sample quadrat. , this reason, collecting percent coverage on all sites allows the Sanctuary Program to compare  density. Percent cover is also estimated on excavated samples an")
+        text.display_text("For materials that cannot be brought to the surface (reef balls, consolidated concrete pipes, large basalt), counting and measuring oysters cannot be done on SCUBA. Instead, a 1/4 m² quadrat with a 5x5 grid is used to estimate percent cover. Within this grid are 25 points of intersection. Each instance of an oyster (or mussel) under a point of intersection.",align='left') #represents 4% of the sample quadrat. , this reason, collecting percent coverage on all sites allows the Sanctuary Program to compare  density. Percent cover is also estimated on excavated samples an")
         grid_quad = Image.open('imgs/GridQuad.jpg')
         grid_cap = "Text"
         display_image(grid_quad, 450, grid_cap)
@@ -112,14 +112,19 @@ with tab5:
     col1,col2 = st.columns(2)
     with col1:
         text.display_text("Throughout the history of the Oyster Sanctuary Program, various types of crushed aggregate rock have been used in the construction process. These include marl limestone, granite, and concrete. Recycled oyster and surf clam shells have also been used to 'refurbish' some ares of older sanctuaries. All of these material types can be easily dug up or excavated by divers and brought to the surface." , align= 'left')
-        text.display_text("Divers collect all the observational data including percent coverage estimates before excavating material. Using a quarter meter quadrat, divers standardize the sample size. Any material and oysters in the quadrat are removed and placed into a basket which is tethered to the boat. Once the sample has been collected, the surface crew are signalled (three tugs on the line) to bring up the basket. The oyster rock is then pulled up to the boat where it will be processed.", align='left')
-        text.display_text("", align='left')
+        text.display_text("Divers collect all the observational data including percent coverage estimates before excavating material. A 1/4 m² PVC quadrat is placed in the same area as the grid quadrat. Any material and oysters in the quadrat are removed and placed into a basket which is tethered to the boat. Once the sample has been collected, the surface crew are signalled (three tugs on the line) to bring up the basket. The oyster rock is then pulled up to the boat where it will be processed.", align='left')
+        text.display_text("On the boat, crew take a closer look at the oysters and also look for boring sponge. To get an idea of the size class structure within a sample the first 400 oysters are measured by their left valve length/height with calipers to the nearest mm. If there are more than 400 oysters, the remaining are counted. The total number of oysters in a sample multiplied by four gives an estimate of density (oysters/m²)." , align='left')
+        text.display_text("Any oysters that are open, attatched at the hinge, and missing the meat inside are considered 'boxes'. Boxes are also measured but their lengths are recorded in the last columns of the excavation data sheet. ",align='left')
+
+        oyster_shell = Image.open('imgs/LVH.jpg')
+        oyster_shell_cap = "An illustration for measuring shell height on an oyster."
+        display_image(oyster_shell, 300, oyster_shell_cap)
 
     with col2:
         exc_sheet = Image.open('imgs/OSDataSheetExc.jpg')
-        exc_cap = "Text"
+        exc_cap = "Data sheet for excavated samples used during the annual Oyster Sanctuary monitoring efforts. Oysters are measured by their shell height to the nearest mm."
 
         display_image(exc_sheet, 600, exc_cap)
 
-
-
+    # with st.expander("Subsampling Rationale"):
+    #     st.write("ds")
