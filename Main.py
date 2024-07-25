@@ -36,7 +36,7 @@ col1, col2 = st.columns([0.8,1])
 
 with col1:
     text.display_text("On this page you can interact with the Oyster Sanctuary dataset that's been collected over the course of five years!", font_size=18, align='left')
-    text.display_text("Follow the steps below to get a general idea of how to interact with the different pages.", font_size=18, align='left')
+    text.display_text("Follow the steps below to get a general idea of how to select filters as you explore the dataset.", font_size=18, align='left')
    
     st.info("""
             1) Select a year in the sidebar on the left to change the graphic.
