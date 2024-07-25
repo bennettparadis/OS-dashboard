@@ -116,11 +116,11 @@ with tab5:
         text.display_text("On the boat, crew take a closer look at the oysters and also look for boring sponge. To get an idea of the size class structure within a sample the first 400 oysters are measured by their left valve length/height with calipers to the nearest mm. If there are more than 400 oysters, the remaining are counted. The total number of oysters in a sample multiplied by four gives an estimate of density (oysters/m²)." , align='left')
         text.display_text("Any oysters that are open, attatched at the hinge, and missing the meat inside are considered 'boxes'. Boxes are also measured but their lengths are recorded in the last columns of the excavation data sheet. ",align='left')
 
+    with col2:
         oyster_shell = Image.open('imgs/LVH.jpg')
         oyster_shell_cap = "An illustration for measuring shell height on an oyster."
         display_image(oyster_shell, 300, oyster_shell_cap)
-
-    with col2:
+        
         exc_sheet = Image.open('imgs/OSDataSheetExc.jpg')
         exc_cap = "Data sheet for excavated samples used during the annual Oyster Sanctuary monitoring efforts. Oysters are measured by their shell height to the nearest mm."
 
