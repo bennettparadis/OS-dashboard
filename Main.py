@@ -107,4 +107,4 @@ with col2:
 
      # Displaying the figure in Streamlit
     st.plotly_chart(fig)
-    text.display_text("This donut chart illustrates how many legal, sublegal, and spat oysters were sampled during the annual monitoring of North Carolina's oyster sanctuaries. Select a year in the side bar to change the data.")
+    text.display_text("This donut chart illustrates how many legal, sublegal, and spat oysters were sampled during the annual monitoring of North Carolina's oyster sanctuaries. Select a year in the side bar to change the data & the graph above.")
