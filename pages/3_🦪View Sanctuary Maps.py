@@ -39,7 +39,7 @@ df = pd.read_csv("data/2019-2023_oyster_densities.csv")
 sanctuary_names = sorted(df["OS_Name"].unique())
 default_sanctuary1 = "Neuse River"
 
-default_sanctuary_index1 = list(df["OS_Name"].unique()).index(default_sanctuary1)
+default_sanctuary_index1 = sorted(df["OS_Name"].unique()).index(default_sanctuary1)
 
 
 st.sidebar.subheader("Use the filters to explore the different material footprints at each Sanctuary!")
