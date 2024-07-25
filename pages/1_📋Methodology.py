@@ -41,8 +41,8 @@ with tab1:
     col1, col2 = st.columns(2)
     with col1:
         st.subheader('Monitoring Objectives')
-        text.display_text('Evaluating performance of an oyster sanctuary involves monitoring the long-term stability of reef materials and quantifying their ability as reef habitat to host oysters over time. Monitoring oyster sanctuaries can benefit restoration practices by demonstrating which factors contribute to cost-effective restoration such as which materials yield consistently high oyster densities over time.', align='left')
-        text.display_text("""The primary objectives of this monitoring program are as follows:
+        text.display_text('Evaluating the performance of an oyster sanctuary involves monitoring the long-term stability of reef materials and quantifying their ability to host oysters over time. Monitoring oyster sanctuaries can benefit restoration practices by revealing which factors contribute to cost-effective restoration such as which materials yield consistently high oyster densities over time.', align='left')
+        text.display_text("""The primary objectives of NCDMF's oyster sanctuary monitoring are as follows:
 
         1)	Evaluate material performance as oyster habitat.
         2)	Evaluate material long-term durability and stability. 
