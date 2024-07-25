@@ -199,6 +199,6 @@ def display_map(sanctuary_selection, filtered_materials, height, width):
             hoverlabel=dict(bgcolor='white', font=dict(color='black', size=14))
         )
 
-        st.plotly_chart(fig)
+        st.plotly_chart(fig, use_container_width=True)
     else:
         st.warning("No map data available for the selected sanctuary.")
