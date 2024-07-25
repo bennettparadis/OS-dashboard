@@ -99,13 +99,6 @@ with col2:
     fig.update_layout(
         title=f"Size Class Breakdown - Sampling {year}",
         title_x=0.25,
-        legend=dict(
-                title= dict(
-                    text='Material',
-                    font= dict(color='black', size=16)
-                ),
-                font=dict(color='black', size=16)
-        )
     )
     # Displaying the figure in Streamlit
     st.plotly_chart(fig)
