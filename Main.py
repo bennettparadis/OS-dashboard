@@ -95,9 +95,17 @@ with col2:
         marker=dict(colors=['#636EFA', '#EF553B', '#00CC96'], line=dict(color='black', width=2)),
         hoverlabel=dict(bgcolor='white', font=dict(color='black', size=16))
     )
+           
     fig.update_layout(
         title=f"Size Class Breakdown - Sampling {year}",
-        title_x=0.25
+        title_x=0.25,
+        legend=dict(
+                title= dict(
+                    text='Material',
+                    font= dict(color='black', size=16)
+                ),
+                font=dict(color='black', size=16)
+        )
     )
     # Displaying the figure in Streamlit
     st.plotly_chart(fig)
