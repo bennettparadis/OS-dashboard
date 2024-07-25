@@ -14,7 +14,7 @@ st.info("**Hello and welcome to the Oyster Sanctuary Data Explorer! The dataset 
            f"If you would like to learn more about the importance of oyster sanctuaries in North Carolina, how they are built, and current projects, please visit the [StoryMap](https://storymaps.arcgis.com/stories/d876f9b131174f859270c600ccf3545f)!**")
 
 text.display_text("In 1996, the North Carolina Division of Marine Fisheries began building artificial reefs with the specific aim of creating protected habitat for subtidal oysters. These Oyster Sanctuaries are closed to harvest with the goal of creating a network of thriving and self-sustaining oyster reefs throughout Pamlico Sound. ")
-text.display_text("DMF's dive team conducts annual monitoring to gather data used to quantify the performance & longevity of the oyster sanctuaries. This dashboard allows users to explore the dataset collected from these yearly SCUBA surveys. See below to get started!")
+text.display_text("NCDMF's dive team conducts annual monitoring to gather data used to quantify the performance & longevity of the oyster sanctuaries. This dashboard allows users to explore the data collected from these SCUBA surveys. See below to get started!")
 
 st.write('---')
 
