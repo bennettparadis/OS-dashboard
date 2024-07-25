@@ -37,7 +37,7 @@ df = pd.read_csv("data/2019-2023_oyster_densities.csv")
 
 # ----- SIDE BAR -----
 sanctuary_names = sorted(df["OS_Name"].unique())
-default_sanctuary1 = "Cedar Island"
+default_sanctuary1 = "Little Creek"
 
 default_sanctuary_index1 = sorted(df["OS_Name"].unique()).index(default_sanctuary1)
 
