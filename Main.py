@@ -81,9 +81,11 @@ with col2:
                 text = "Oyster Size Classes",
                 font=dict(size=18, color = 'black')),
             font=dict(size=16),
-            orientation = "v",
+            orientation = "h",
             yanchor = "bottom",
-            xanchor = "center"
+            y = 0.01,
+            xanchor = "center",
+            x = 0.5
         )
     )
 
