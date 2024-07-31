@@ -73,7 +73,7 @@ with col2:
     fig.update_layout(
         title=dict(
             text=f"Oyster Sanctuary Sampling {year}",
-            x=0.5,
+            x=0.1,
             font=dict(size=24)
         ),
         legend=dict(
