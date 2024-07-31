@@ -80,7 +80,10 @@ with col2:
             title = dict(
                 text = "Oyster Size Classes",
                 font=dict(size=18, color = 'black')),
-            font=dict(size=18)
+            font=dict(size=16),
+            orientation = "v",
+            yanchor = "bottom",
+            xanchor = "center"
         )
     )
 
