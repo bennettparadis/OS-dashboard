@@ -5,29 +5,29 @@ import io
 import base64
 
 def display_image(image, new_width, caption):
-        # Resize the image
-        width, height = image.size
-        new_height = int((new_width / width) * height)
-        image_resized = image.resize((new_width, new_height))
+    # Resize the image while maintaining the aspect ratio
+    width, height = image.size
+    new_height = int((new_width / width) * height)
+    image_resized = image.resize((new_width, new_height))
 
-        # Save the resized image to a BytesIO object
-        image_bytes = io.BytesIO()
-        image_resized.save(image_bytes, format='PNG')
-        image_bytes.seek(0)
+    # Save the resized image to a BytesIO object
+    image_bytes = io.BytesIO()
+    image_resized.save(image_bytes, format='PNG')
+    image_bytes.seek(0)
 
-        # Convert image bytes to base64
-        image_base64 = base64.b64encode(image_bytes.read()).decode("utf-8")
+    # Convert image bytes to base64
+    image_base64 = base64.b64encode(image_bytes.read()).decode("utf-8")
 
-        # Define the image and caption HTML template
-        image_html = f"""
-            <div style="text-align: center;">
-                <img src="data:image/png;base64,{image_base64}" width="{new_width}" height="{new_height}" />
-                <p style="width: {new_width}px; margin: 0 auto;">{caption}</p>
-            </div>
-        """
-        # Display the image and caption using st.markdown
-        st.markdown(image_html, unsafe_allow_html=True)
-
+    # Define the image and caption HTML template with responsive design
+    image_html = f"""
+        <div style="text-align: center;">
+            <img src="data:image/png;base64,{image_base64}" style="width: 100%; max-width: {new_width}px; height: auto;" />
+            <p style="max-width: {new_width}px; margin: 0 auto;">{caption}</p>
+        </div>
+    """
+    # Display the image and caption using st.markdown
+    st.markdown(image_html, unsafe_allow_html=True)
+        
 #PAGE SETUP
 text.tab_display()
 text.display_text("📋Methodology", font_size=50, font_weight='bold')
