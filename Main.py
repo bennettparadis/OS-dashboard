@@ -83,7 +83,7 @@ with col2:
             font=dict(size=16),
             orientation = "h",
             yanchor = "top",
-            y = -0.25,
+            y = -0.20,
             xanchor = "center",
             x = 0.5
         )
