@@ -72,7 +72,7 @@ with col2:
     )
     fig.update_layout(
         title=dict(
-            text=f"Size Class Breakdown - Sampling {year}",
+            text=f"Oyster Sanctuary Sampling {year}",
             x=0.25,
             font=dict(size=24)
         ),
@@ -82,10 +82,10 @@ with col2:
                 font=dict(size=18, color = 'black')),
             font=dict(size=16),
             orientation = "h",
-            yanchor = "bottom",
+            yanchor = "top",
             y = -0.5,
             xanchor = "center",
-            x = 0.05
+            x = 0.5
         )
     )
 
