@@ -157,19 +157,6 @@ def display_map(sanctuary_selection, filtered_materials, height, width):
         if filtered_materials.crs != 'EPSG:4326':
             filtered_materials = filtered_materials.to_crs(epsg=4326)
 
-        rename_dict = {
-            "REEF_SITE": "Reef Site",
-            "OS_Site": "OS Site",
-            "Material": "Material",
-            "DeployYear": "Deployment Year",
-            "DeployMont": "Deployment Month",
-            "AREA_SQFT": "Area (sqft)",
-            "Latitude": "Latitude",
-            "Longitude": "Longitude"
-        }
-        
-        filtered_materials = filtered_materials.rename(columns=rename_dict)
-
         # Convert GeoDataFrame to GeoJSON
         geojson1 = filtered_materials.__geo_interface__
 
