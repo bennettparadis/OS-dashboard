@@ -83,9 +83,9 @@ with col2:
             font=dict(size=16),
             orientation = "h",
             yanchor = "bottom",
-            y = 0.01,
+            y = 0.0,
             xanchor = "center",
-            x = 0.5
+            x = 0.05
         )
     )
 
