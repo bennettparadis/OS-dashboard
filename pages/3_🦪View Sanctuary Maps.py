@@ -42,8 +42,8 @@ default_sanctuary1 = "Little Creek"
 default_sanctuary_index1 = sorted(df["OS_Name"].unique()).index(default_sanctuary1)
 
 
-st.sidebar.subheader("Use the filters to explore the different material footprints at each Sanctuary!")
-st.sidebar.header("Select Filters:")
+st.sidebar.subheader("Choose an oyster sanctuary in the drop down to explore the different material footprints and layouts!")
+#st.sidebar.header("Select Filters:")
 
 sanctuary1 = st.sidebar.selectbox(
     "Select an Oyster Sanctuary:",
