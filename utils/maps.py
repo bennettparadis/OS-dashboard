@@ -157,9 +157,6 @@ def display_map(sanctuary_selection, filtered_materials, height, width):
         if filtered_materials.crs != 'EPSG:4326':
             filtered_materials = filtered_materials.to_crs(epsg=4326)
 
-        # Convert GeoDataFrame to GeoJSON
-        geojson1 = filtered_materials.__geo_interface__
-
         # Rename columns for better display names
         rename_dict = {
             "REEF_SITE": "Reef Site",
@@ -179,8 +176,9 @@ def display_map(sanctuary_selection, filtered_materials, height, width):
         #Format fields to be displayed when user hovers cursor
         hover_columns = list(rename_dict.values())
         #hover_columns = ["REEF_SITE", "OS_Site", "Material", "DeployYear", "DeployMont", "AREA_SQFT", "Latitude", "Longitude"]
-        # dictionary to set fields to true, so index is removed in hover display
+        # Create a dictionary for hover_data
         hover_data = {column: True for column in rename_dict.values()}
+
         
         # Create a Plotly map
         fig = px.choropleth_mapbox(
