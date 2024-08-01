@@ -38,7 +38,7 @@ text.pages_font()
 # Radio button for size class filter
 size_selection = st.sidebar.radio(
     "Select a size class to analyze:", 
-    options=["Total", "Legal", "Sub-Legal", "Spat", "Non-spat (Sub-Legal + Legal)"],
+    options=["Total", "Legal", "Sub-Legal", "Spat", "Non-spat"],
     key=40
 )
 
@@ -47,7 +47,7 @@ size_select_dict = {
     'Legal': 'legal',
     'Sub-Legal': 'sublegal',
     'Spat': 'spat',
-    'Non-spat (Sub-Legal + Legal)' : 'non_spat'
+    'Non-spat' : 'non_spat'
 }
 
 # Multiselect widget for years
