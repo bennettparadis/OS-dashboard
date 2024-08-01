@@ -159,7 +159,7 @@ def display_map(sanctuary_selection, filtered_materials, height, width):
 
         # Rename columns for better display names
         rename_dict = {
-            "REEF_SITE": "Reef Site",
+            "REEF_SITE": "Site Number",
             "OS_Site": "OS Name",
             "Material": "Material",
             "DeployYear": "Deployment Year",
