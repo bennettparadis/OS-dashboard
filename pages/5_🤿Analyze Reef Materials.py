@@ -47,7 +47,7 @@ size_select_dict = {
     'Legal': 'legal',
     'Sub-Legal': 'sublegal',
     'Spat': 'spat',
-    'Non-spat' : 'non_spat'
+    'Non-spat (Sub-Legal + Legal)' : 'non_spat'
 }
 
 # Multiselect widget for years
