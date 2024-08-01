@@ -32,13 +32,13 @@ with st.expander("Scatterplot Instructions"):
 df = pd.read_csv("data/2019-2023_oyster_densities.csv")
 
 # Sidebar setup
-st.sidebar.header("Apply filters to change the dataset and the graphs.")
+st.sidebar.header("Apply filters to edit the dataset and change the graphs.")
 text.pages_font()
 
 # Radio button for size class filter
 size_selection = st.sidebar.radio(
     "Select a size class to analyze:", 
-    options=["Total", "Legal", "Sub-Legal", "Spat", "Non-spat (Sub-Legal + Legal"],
+    options=["Total", "Legal", "Sub-Legal", "Spat", "Non-spat (Sub-Legal + Legal)"],
     key=40
 )
 
