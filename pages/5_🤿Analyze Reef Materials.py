@@ -14,7 +14,7 @@ text.display_text("North Carolina's oldest oyster sanctuaries are nearly 30 year
 
 #Instruction text
 st.info("""
-    **Analyze the past five years of oyster monitoring data by using the sidebar to set filters and interact with the graphs below. Hover your cursor over the plots to get more information or draw a box to zoom in on some data.** 
+    **Analyze the past five years of oyster monitoring data by using the sidebar to set filters and interact with the graphs below. Hover your cursor over the plots to get more information or draw a box to zoom in on select data points.** 
 """)
 
 with st.expander("Scatterplot Instructions"):
