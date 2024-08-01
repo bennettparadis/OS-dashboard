@@ -32,22 +32,14 @@ with st.expander("Scatterplot Instructions"):
 df = pd.read_csv("data/2019-2023_oyster_densities.csv")
 
 # Sidebar setup
-st.sidebar.header("Select Filters:")
+st.sidebar.header("Apply filters to change the dataset and the graphs.")
 text.pages_font()
-
-# Multiselect widget for years
-years = st.sidebar.multiselect(
-    "Filter by Year:", 
-    df["Year"].unique().tolist(),  # Convert unique years to list
-    default=df["Year"].unique().tolist(),  # Set default to all years
-    key=40
-)
 
 # Radio button for size class filter
 size_selection = st.sidebar.radio(
     "Filter by Size Class:", 
     options=["Total", "Legal", "Sub-Legal", "Spat", "Non-spat"],
-    key=41
+    key=40
 )
 
 size_select_dict = {
@@ -58,8 +50,16 @@ size_select_dict = {
     'Non-spat' : 'non_spat'
 }
 
+# Multiselect widget for years
+years = st.sidebar.multiselect(
+    "Years:", 
+    df["Year"].unique().tolist(),  # Convert unique years to list
+    default=df["Year"].unique().tolist(),  # Set default to all years
+    key=41
+)
+
 sanctuaries = st.sidebar.multiselect(
-    "Filter by Sanctuary:", 
+    "Oyster Sanctuaries:", 
     df["OS_Name"].unique().tolist(),  # Convert unique years to list
     default=df["OS_Name"].unique().tolist(),  # Set default to all years
     key=42
