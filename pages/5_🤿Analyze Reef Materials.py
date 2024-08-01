@@ -37,7 +37,7 @@ text.pages_font()
 
 # Radio button for size class filter
 size_selection = st.sidebar.radio(
-    "Filter by Size Class:", 
+    "Select a size class to analyze:", 
     options=["Total", "Legal", "Sub-Legal", "Spat", "Non-spat"],
     key=40
 )
