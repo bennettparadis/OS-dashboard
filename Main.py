@@ -20,7 +20,6 @@ st.write('---')
 
 df = pd.read_csv('data/OSdata_extractions.csv')
 
-st.sidebar.subheader("Here in the sidebar you can make selections to interact with the dataset and change the visualizations on different pages.")
 st.sidebar.subheader("Choose a year below to alter the donut chart on the right.")
 year = st.sidebar.selectbox(
     "Select a Year:", 
