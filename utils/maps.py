@@ -173,23 +173,10 @@ def display_map(sanctuary_selection, filtered_materials, height, width):
         # Convert GeoDataFrame to GeoJSON
         geojson1 = filtered_materials.__geo_interface__
 
-        hover_data = {
-            "Reef Site": True,
-            "OS Site": True,
-            "Material": True,
-            "Deployment Year": True,
-            "Deployment Month": True,
-            "Area (sqft)": True,
-            "Latitude": True,
-            "Longitude": True
-        }
-
         #Format fields to be displayed when user hovers cursor
-        #hover_columns = list(rename_dict.values())
+        hover_columns = list(rename_dict.values())
         #hover_columns = ["REEF_SITE", "OS_Site", "Material", "DeployYear", "DeployMont", "AREA_SQFT", "Latitude", "Longitude"]
-        
-
-        
+                
         # Create a Plotly map
         fig = px.choropleth_mapbox(
             filtered_materials,
@@ -203,7 +190,7 @@ def display_map(sanctuary_selection, filtered_materials, height, width):
             opacity=transparency_value,
             height=height,
             width=width,
-            hover_data=hover_data
+            hover_data=hover_columns
         )
 
         fig.update_layout(
