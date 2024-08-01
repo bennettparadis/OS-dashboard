@@ -25,7 +25,7 @@ text.display_text("The annual dive surveys provide snapshots of the oyster popul
 
 with st.expander("Instructions"):
         st.info("""
-            **Use this side by side comparison tool to see how oyster density estimates and population structures change between sanctuaries, materials, and from year to year.** 
+            **On this page you can compare side-by-side the oyster density estimates and population structures between different sanctuaries, materials, and from year to year.** 
             
             **The histogram below shows the frequency of each size class. Spat are 'baby' oysters (<26mm). Legal oysters are market sized (>75mm). Sublegal is everything in between.** 
                     
