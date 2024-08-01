@@ -47,18 +47,18 @@ default_sanctuary_index1 = sorted(df["OS_Name"].unique()).index(default_sanctuar
 default_sanctuary_index2 = sorted(df["OS_Name"].unique()).index(default_sanctuary2)
 
 
-st.sidebar.subheader("Use the filters on the left to make comparisons between sanctuaries, materials, and years!")
+st.sidebar.subheader("Use the filters on the left to make comparisons between sanctuaries, years, and materials.")
 st.sidebar.header("Selection 1:")
 
 sanctuary1 = st.sidebar.selectbox(
-    "Select an Oyster Sanctuary:",
+    "Choose an Oyster Sanctuary:",
     sanctuary_names,
     index=default_sanctuary_index1,
     key=11
 )
 
 year1 = st.sidebar.select_slider(
-    "Select a Year:", 
+    "Sampling Year:", 
     df["Year"].unique(),
     value=default_year,
     key=10
@@ -66,7 +66,7 @@ year1 = st.sidebar.select_slider(
 
 materials1 = maps.OS_dict.get(sanctuary1, {}).get('materials', df["Material"].unique())
 material_type1 = st.sidebar.multiselect(
-    "Select a Material Type:",
+    "Material Type(s):",
     options=materials1,
     default=materials1,
     key=12
@@ -83,14 +83,14 @@ hist_selection1 = histdata.query(
 st.sidebar.header("Selection 2:")
 
 sanctuary2 = st.sidebar.selectbox(
-    "Select an Oyster Sanctuary:",
+    "Choose an Oyster Sanctuary:",
     sanctuary_names,
     index=default_sanctuary_index2,
     key=21
 )
 
 year2 = st.sidebar.select_slider(
-    "Select a Year:", 
+    "Sampling Year:", 
     df["Year"].unique(),
     value=default_year,
     key=20
@@ -98,7 +98,7 @@ year2 = st.sidebar.select_slider(
 
 materials2 = maps.OS_dict.get(sanctuary2, {}).get('materials', df["Material"].unique())
 material_type2 = st.sidebar.multiselect(
-    "Select a Material Type:",
+    "Material Type(s):",
     options=materials2,
     default=materials2,
     key=22
