@@ -160,7 +160,24 @@ def display_map(sanctuary_selection, filtered_materials, height, width):
         # Convert GeoDataFrame to GeoJSON
         geojson1 = filtered_materials.__geo_interface__
 
-        hover_columns = ["REEF_SITE", "OS_Site", "Material", "DeployYear", "DeployMont", "AREA_SQFT", "Latitude", "Longitude"]
+        # Rename columns for better display names
+        rename_dict = {
+            "REEF_SITE": "Reef Site",
+            "OS_Site": "OS Site",
+            "Material": "Material",
+            "DeployYear": "Deployment Year",
+            "DeployMont": "Deployment Month",
+            "AREA_SQFT": "Area (sqft)",
+            "Latitude": "Latitude",
+            "Longitude": "Longitude"
+        }
+        filtered_materials = filtered_materials.rename(columns=rename_dict)
+
+        # Convert GeoDataFrame to GeoJSON
+        geojson1 = filtered_materials.__geo_interface__
+
+        hover_columns = list(rename_dict.values())
+        #hover_columns = ["REEF_SITE", "OS_Site", "Material", "DeployYear", "DeployMont", "AREA_SQFT", "Latitude", "Longitude"]
 
         # Create a Plotly map
         fig = px.choropleth_mapbox(
