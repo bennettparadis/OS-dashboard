@@ -176,9 +176,6 @@ def display_map(sanctuary_selection, filtered_materials, height, width):
         #Format fields to be displayed when user hovers cursor
         hover_columns = list(rename_dict.values())
         #hover_columns = ["REEF_SITE", "OS_Site", "Material", "DeployYear", "DeployMont", "AREA_SQFT", "Latitude", "Longitude"]
-        # Create a dictionary for hover_data
-        hover_data = {column: True for column in rename_dict.values()}
-
         
         # Create a Plotly map
         fig = px.choropleth_mapbox(
@@ -193,7 +190,7 @@ def display_map(sanctuary_selection, filtered_materials, height, width):
             opacity=transparency_value,
             height=height,
             width=width,
-            hover_data=hover_data
+            hover_data=hover_columns
         )
 
         fig.update_layout(
