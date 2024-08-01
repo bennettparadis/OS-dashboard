@@ -18,10 +18,10 @@ text.display_text("NCDMF's dive team conducts annual monitoring to gather data u
 
 st.write('---')
 
-st.sidebar.success("Choose how you want to explore the dataset!")
-
 df = pd.read_csv('data/OSdata_extractions.csv')
 
+st.sidebar.subheader("Here in the sidebar you can make selections to interact with the dataset and change the visualizations on different pages.")
+st.sidebar.subheader("Choose a year below to alter the donut chart on the right.")
 year = st.sidebar.selectbox(
     "Select a Year:", 
     df["Year"].unique(),
