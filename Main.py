@@ -3,15 +3,17 @@ import pandas as pd
 import plotly.graph_objects as go
 from utils import text
 
-text.tab_display()
+# Ensure this is first as it calls `set_page_config`
+text.tab_display()  
 
-st.sidebar.title("Visualize 🦪 Metrics")
-st.sidebar.caption("Made by [Bennett Paradis](https://www.linkedin.com/in/bennett-p-930542b6/).")
+# Sidebar title and caption (this will appear at the top of the sidebar)
+st.sidebar.title("Oyster Data Explorer")
+st.sidebar.caption("Explore NC's Oyster Sanctuary data")
 
+# Display pages in the sidebar after the title and caption
 text.pages_font()
 
 # --- MAINPAGE ---
-
 text.display_text("🦪 NC's Oyster Sanctuary Data Explorer 📊", font_size=50, font_weight='bold')
 
 st.info("**Hello and welcome to the Oyster Sanctuary Data Explorer! The dataset featured here is part of ongoing oyster restoration and monitoring efforts in North Carolina. "
@@ -24,6 +26,7 @@ st.write('---')
 
 df = pd.read_csv('data/OSdata_extractions.csv')
 
+# Sidebar selectbox after title and caption
 st.sidebar.subheader("Choose a year below to alter the donut chart on the right.")
 year = st.sidebar.selectbox(
     "Select a Year:", 
@@ -92,6 +95,6 @@ with col2:
         )
     )
 
-     # Displaying the figure in Streamlit
+    # Displaying the figure in Streamlit
     st.plotly_chart(fig, use_container_width=True)
     text.display_text("This donut chart illustrates how many legal, sublegal, and spat oysters were sampled during the annual monitoring of North Carolina's oyster sanctuaries. Select a year in the side bar to change the data & the graph above.")
