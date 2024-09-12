@@ -3,10 +3,11 @@ import pandas as pd
 import plotly.graph_objects as go
 from utils import text
 
+text.tab_display()
+
 st.sidebar.title("Visualize 🦪 Metrics")
 st.sidebar.caption("Made by [Bennett Paradis](https://www.linkedin.com/in/bennett-p-930542b6/).")
 
-text.tab_display()
 text.pages_font()
 
 # --- MAINPAGE ---
