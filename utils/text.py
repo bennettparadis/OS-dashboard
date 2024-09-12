@@ -27,9 +27,6 @@ custom_css = """
     }
 </style>
 """
-def title_contact():
-      st.sidebar.title("Visualize 🦪 Metrics")
-      st.sidebar.caption("Made by [Bennett Paradis](https://www.linkedin.com/in/bennett-p-930542b6/).")
       
 def pages_font():
        st.markdown(custom_css, unsafe_allow_html=True) 
