@@ -11,7 +11,7 @@ text.pages_font()
 text.display_text("🦪 NC's Oyster Sanctuary Data Explorer 📊", font_size=50, font_weight='bold')
 
 st.markdown(
-    '<p style="text-align: center; font-size: 18px;">Created by <a href="https://www.linkedin.com/in/bennett-p-930542b6/" target="_blank">Bennett Paradis</a></p>', 
+    '<p style="text-align: center; font-size: 16px;">A data visualization app created by <a href="https://www.linkedin.com/in/bennett-p-930542b6/" target="_blank">Bennett Paradis</a></p>', 
     unsafe_allow_html=True
 )
 
