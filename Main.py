@@ -21,8 +21,6 @@ st.write('---')
 
 df = pd.read_csv('data/OSdata_extractions.csv')
 
-st.sidebar.markdown("A data visualization app by [Bennett Paradis](https://www.linkedin.com/in/bennett-p-930542b6/)")
-
 st.sidebar.subheader("Choose a year below to alter the donut chart on the right.")
 year = st.sidebar.selectbox(
     "Select a Year:", 
@@ -97,3 +95,6 @@ with col2:
      # Displaying the figure in Streamlit
     st.plotly_chart(fig, use_container_width=True)
     text.display_text("This donut chart illustrates how many legal, sublegal, and spat oysters were sampled during the annual monitoring of North Carolina's oyster sanctuaries. Select a year in the side bar to change the data & the graph above.")
+
+st.sidebar.divider()
+st.sidebar.markdown("A data visualization app by [Bennett Paradis](https://www.linkedin.com/in/bennett-p-930542b6/)")
