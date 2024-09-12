@@ -28,9 +28,6 @@ year = st.sidebar.selectbox(
     key=10
 )
 
-with st.sidebar:
-           st.divider()
-           st.markdown("Made by [Bennett Paradis](https://www.linkedin.com/in/bennett-p-930542b6/).")")
 
 df_selection = df.query(
     "Year == @year"
