@@ -15,6 +15,18 @@ def display_text(content, font_size=20, font_weight= 'normal', align='center'):
         unsafe_allow_html=True,
     )
 
+# text function to support hyperlinks
+def display_hyperlink_text(content, font_size=20, align='center'):
+    st.markdown(
+        f"""
+        <div style="text-align: {align};">
+            <p style="font-size:{font_size}px;">{content}</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+
 #sidebar text function for pages labels/links
 # Define the custom CSS
 custom_css = """
