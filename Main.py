@@ -3,6 +3,9 @@ import pandas as pd
 import plotly.graph_objects as go
 from utils import text
 
+st.sidebar.title("Visualize 🦪 Metrics")
+st.sidebar.caption("Made by [Bennett Paradis](https://www.linkedin.com/in/bennett-p-930542b6/).")
+
 text.tab_display()
 text.pages_font()
 
@@ -19,9 +22,6 @@ text.display_text("NCDMF's dive team conducts annual monitoring to gather data u
 st.write('---')
 
 df = pd.read_csv('data/OSdata_extractions.csv')
-
-st.sidebar.title("Visualize 🦪 Metrics")
-st.sidebar.caption("Made by [Bennett Paradis](https://www.linkedin.com/in/bennett-p-930542b6/).")
 
 st.sidebar.subheader("Choose a year below to alter the donut chart on the right.")
 year = st.sidebar.selectbox(
