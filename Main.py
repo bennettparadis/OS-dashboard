@@ -10,6 +10,8 @@ text.pages_font()
 
 text.display_text("🦪 NC's Oyster Sanctuary Data Explorer 📊", font_size=50, font_weight='bold')
 
+st.divider()
+st.markdown("A data visualization app by [Bennett Paradis](https://www.linkedin.com/in/bennett-p-930542b6/)")
 
 st.info("**Hello and welcome to the Oyster Sanctuary Data Explorer! The dataset featured here is part of ongoing oyster restoration and monitoring efforts in North Carolina. "
            f"If you would like to learn more about the importance of oyster sanctuaries in North Carolina, how they are built, and current projects, please visit the [StoryMap](https://storymaps.arcgis.com/stories/d876f9b131174f859270c600ccf3545f)!**")
@@ -95,6 +97,3 @@ with col2:
      # Displaying the figure in Streamlit
     st.plotly_chart(fig, use_container_width=True)
     text.display_text("This donut chart illustrates how many legal, sublegal, and spat oysters were sampled during the annual monitoring of North Carolina's oyster sanctuaries. Select a year in the side bar to change the data & the graph above.")
-
-st.sidebar.divider()
-st.sidebar.markdown("A data visualization app by [Bennett Paradis](https://www.linkedin.com/in/bennett-p-930542b6/)")
