@@ -4,6 +4,7 @@ import plotly.graph_objects as go
 from utils import text
 
 text.tab_display()
+text.title_contact()
 text.pages_font()
 
 # --- MAINPAGE ---
