@@ -21,6 +21,8 @@ st.write('---')
 
 df = pd.read_csv('data/OSdata_extractions.csv')
 
+st.sidebar.markdown("A data visualization app by [Bennett Paradis](https://www.linkedin.com/in/bennett-p-930542b6/)".)
+
 st.sidebar.subheader("Choose a year below to alter the donut chart on the right.")
 year = st.sidebar.selectbox(
     "Select a Year:", 
