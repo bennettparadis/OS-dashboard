@@ -9,6 +9,7 @@ text.pages_font()
 # --- MAINPAGE ---
 
 text.display_text("🦪 NC's Oyster Sanctuary Data Explorer 📊", font_size=50, font_weight='bold')
+text.display_text("A visualization tool made by [Bennett Paradis](https://www.linkedin.com/in/bennett-p-930542b6/).", font_size = 20)
 
 st.info("**Hello and welcome to the Oyster Sanctuary Data Explorer! The dataset featured here is part of ongoing oyster restoration and monitoring efforts in North Carolina. "
            f"If you would like to learn more about the importance of oyster sanctuaries in North Carolina, how they are built, and current projects, please visit the [StoryMap](https://storymaps.arcgis.com/stories/d876f9b131174f859270c600ccf3545f)!**")
