@@ -28,11 +28,17 @@ year = st.sidebar.selectbox(
     key=10
 )
 
+with st.sidebar:
+           st.divider()
+           st.markdown("Made by [Bennett Paradis](https://www.linkedin.com/in/bennett-p-930542b6/).")")
+
 df_selection = df.query(
     "Year == @year"
 )
 
 col1, col2 = st.columns([0.8,1])
+
+
 
 with col1:
     text.display_text("Throughout this app you can interact with the Oyster Sanctuary data that's been collected over five years!", font_size=18, align='left')
