@@ -11,7 +11,7 @@ text.pages_font()
 text.display_text("🦪 NC's Oyster Sanctuary Data Explorer 📊", font_size=50, font_weight='bold')
 
 text.display_text(
-           "Created by [Bennett Paradis](https://www.linkedin.com/in/bennett-p-930542b6/),
+           "Created by [Bennett Paradis](https://www.linkedin.com/in/bennett-p-930542b6/)",
            font_size = 16, 
            align = 'center'
            )
