@@ -94,7 +94,7 @@ with col2:
 
     fig.update_layout(
         title=dict(
-            text=f"Oyster Size Class Densities ({year})",
+            text=f"Oyster Size Class Densities {year}",
             x=0.1,
             font=dict(size=24)
         ),
