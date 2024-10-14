@@ -1,4 +1,5 @@
 import streamlit as st
+import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 from utils import text
@@ -23,17 +24,28 @@ text.display_text("NCDMF's dive team conducts annual monitoring to gather data u
 
 st.write('---')
 
+avg_densities = np.array([
+    [2019, 285, 9, 183, 94], 
+    [2020, 895, 38, 537, 320], 
+    [2021, 802, 64, 397, 341], 
+    [2022, 811, 59, 450, 302], 
+    [2023, 1159, 124, 811, 398]
+])
+
+avg_dens_df = pd.DataFrame(avg_densities, columns=['Year', 'Total', 'Legal', 'Sublegal', 'Spat'])
+
+
 df = pd.read_csv('data/OSdata_extractions.csv')
 
 st.sidebar.subheader("Choose a year below to alter the donut chart on the right.")
 year = st.sidebar.selectbox(
     "Select a Year:", 
-    df["Year"].unique(),
+    avg_dens_df["Year"].unique(),
     key=10
 )
 
 
-df_selection = df.query(
+df_selection = avg_dens_df.query(
     "Year == @year"
 )
 
@@ -62,10 +74,9 @@ with col1:
 
 with col2:
     # Donut chart
-    value_counts = df_selection['Size_Class'].value_counts()
-    legal_sum = value_counts['Legal']
-    sublegal_sum = value_counts['Sub-Legal']
-    spat_sum = value_counts['Spat']
+    legal_sum = avg_dens_df['Legal']
+    sublegal_sum = avg_dens_df['Sublegal']
+    spat_sum = avg_dens_df['Spat']
 
     labels = ['Legal (>75mm)', 'Sublegal (26mm< x <76mm)', 'Spat (<26mm)']
     values = [legal_sum, sublegal_sum, spat_sum]
