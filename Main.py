@@ -94,7 +94,7 @@ with col2:
 
     fig.update_layout(
         title=dict(
-            text=f"Oyster Sanctuary Sampling {year}",
+            text=f"Oyster Size Class Densities ({year})",
             x=0.1,
             font=dict(size=24)
         ),
@@ -116,5 +116,5 @@ with col2:
     st.plotly_chart(fig, use_container_width=True)
 
     text.display_text(
-        "This donut chart illustrates how many legal, sublegal, and spat oysters were sampled during the annual monitoring of North Carolina's oyster sanctuaries. Select a year in the sidebar to change the data & the graph above."
+        "This donut chart illustrates how many legal, sublegal, and spat oysters were found on average across all sanctuaries in a given year. Select a year in the sidebar to change the data & the graph above."
     )
