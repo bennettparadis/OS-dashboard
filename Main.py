@@ -116,5 +116,5 @@ with col2:
     st.plotly_chart(fig, use_container_width=True)
 
     text.display_text(
-        "This donut chart illustrates the average proportion of each oyster size class found on across all sanctuaries in a given year. Hover over each section and you can view the approximate density (oysters/m²). Select a year in the sidebar to change the data & the graph above."
+        "This donut chart illustrates the average proportion of each oyster size class found on across all sanctuaries in a given year. Hover over each section and you can view the approximate density in oysters/m². Select a year in the sidebar to change the data & the graph above."
     )
