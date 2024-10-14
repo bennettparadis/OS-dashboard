@@ -83,7 +83,7 @@ with col2:
     values = [legal_sum, sublegal_sum, spat_sum]
 
     fig = go.Figure(
-        data=[go.Pie(labels=labels, values=values, hole=0.3)]
+        data=[go.Pie(labels=labels, values=values, hole=0.3, hovertemplate='%{label}: %{value} oysters/m²<extra></extra>')]
     )
 
     fig.update_traces(
