@@ -73,21 +73,25 @@ with col1:
 
 
 with col2:
-    # Donut chart
-    legal_sum = avg_dens_df['Legal']
-    sublegal_sum = avg_dens_df['Sublegal']
-    spat_sum = avg_dens_df['Spat']
+    # Extract the data for the selected year
+    legal_sum = df_selection['Legal'].values[0]
+    sublegal_sum = df_selection['Sublegal'].values[0]
+    spat_sum = df_selection['Spat'].values[0]
 
-    labels = ['Legal (>75mm)', 'Sublegal (26mm< x <76mm)', 'Spat (<26mm)']
+    # Donut chart
+    labels = ['Legal (>75mm)', 'Sublegal (26mm < x < 76mm)', 'Spat (<26mm)']
     values = [legal_sum, sublegal_sum, spat_sum]
+
     fig = go.Figure(
         data=[go.Pie(labels=labels, values=values, hole=0.3)]
     )
+
     fig.update_traces(
         marker=dict(colors=['#636EFA', '#EF553B', '#00CC96'], line=dict(color='black', width=2)),
         hoverlabel=dict(bgcolor='white', font=dict(color='black', size=16)),
         textfont=dict(size=18)
     )
+
     fig.update_layout(
         title=dict(
             text=f"Oyster Sanctuary Sampling {year}",
@@ -95,18 +99,22 @@ with col2:
             font=dict(size=24)
         ),
         legend=dict(
-            title = dict(
-                text = "Oyster Size Classes",
-                font=dict(size=18, color = 'black')),
+            title=dict(
+                text="Oyster Size Classes",
+                font=dict(size=18, color='black')
+            ),
             font=dict(size=16),
-            orientation = "h",
-            yanchor = "top",
-            y = -0.20,
-            xanchor = "center",
-            x = 0.5
+            orientation="h",
+            yanchor="top",
+            y=-0.20,
+            xanchor="center",
+            x=0.5
         )
     )
 
-     # Displaying the figure in Streamlit
+    # Displaying the figure in Streamlit
     st.plotly_chart(fig, use_container_width=True)
-    text.display_text("This donut chart illustrates how many legal, sublegal, and spat oysters were sampled during the annual monitoring of North Carolina's oyster sanctuaries. Select a year in the side bar to change the data & the graph above.")
+
+    text.display_text(
+        "This donut chart illustrates how many legal, sublegal, and spat oysters were sampled during the annual monitoring of North Carolina's oyster sanctuaries. Select a year in the sidebar to change the data & the graph above."
+    )
