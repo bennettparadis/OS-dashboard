@@ -15,7 +15,7 @@ warnings.filterwarnings('ignore')
 st.set_page_config(page_title="NC Oyster Sanctuary Data", page_icon=":oyster:", layout="wide")
 
 #IMPORT OS DATA (densities and extraction samples)
-df = pd.read_csv("data/2019-2023_oyster_densities.csv").query('Collection.Method == "Extraction"')
+df = pd.read_csv("data/2019-2023_oyster_densities.csv")
 
 histdata = pd.read_csv("data/OSdata_extractions.csv")
 OSMaterial = gpd.read_file("data/OS_material_storymap.shp")
