@@ -40,8 +40,8 @@ text.pages_font()
 
 sanctuary_names = sorted(df["OS_Name"].unique())
 default_year = 2023
-default_sanctuary1 = "Raccoon Island"
-default_sanctuary2 = "West Bay"
+default_sanctuary1 = "Swan Island"
+default_sanctuary2 = "Crab Hole"
 
 default_year_index = sorted(df["Year"].unique()).index(default_year)
 default_sanctuary_index1 = sorted(df["OS_Name"].unique()).index(default_sanctuary1)
