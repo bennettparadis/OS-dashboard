@@ -124,7 +124,7 @@ fig1.update_traces(
 )
 
 fig1.update_layout(
-    yaxis_range=[-500,4700],
+    yaxis_range=[-500,5000],
     xaxis_range=[0,30],
     paper_bgcolor='#D6F2F4', 
     plot_bgcolor='white',
