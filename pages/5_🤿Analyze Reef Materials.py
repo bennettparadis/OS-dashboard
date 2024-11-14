@@ -29,7 +29,7 @@ with st.expander("Scatterplot Instructions"):
 """)
 
 #import data
-df = pd.read_csv("data/2019-2023_oyster_densities.csv")
+df = pd.read_csv("data/2019-2024_oyster_densities.csv")
 
 # Sidebar setup
 st.sidebar.header("Apply filters to edit the dataset and change the graphs.")
