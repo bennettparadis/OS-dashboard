@@ -181,7 +181,7 @@ fig2 = px.box(df_selection,
                     'Consolidated Concrete':'#FF6692'
                 },
                 hover_data=['OS_Name', 'Year'],
-                height=600,
+                height=700,
                 width=950)
 
 fig2.update_traces(
