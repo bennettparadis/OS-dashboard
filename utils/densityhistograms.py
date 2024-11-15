@@ -61,7 +61,8 @@ def make_histogram(data_selection, histogram_df, max_y):
             yaxis_range=[0,max_y],
             font=dict(color='black'),
             xaxis=dict(
-                tickformat= ',d', #format labels to integer values 
+                tickvals=[1, 6, 11, 16, 21, 26, 31, 36, 41, 46, 51, 56, 61, 66, 71, 76, 81, 86, 91, 96, 101, 106, 111, 116, 121, 126, 131, 136, 141, 146, 151, 156, 161],  # Replace with your bin centers
+                ticktext=['1-5', '6-10', '11-15', '16-20', '21-25', '26-30', '31-35', '36-40' ,'41-45', '46-50', '51-55', '56-60', '61-65', '66-70', '71-75', '76-80', '81-85', '86-90', '91-95', '96-100', '101-105', '106-110', '111-115', '116-120', '121-125', '126-130', '131-135', '136-140', '141-145', '146-150', '151-155', '156-160' ],
                 title=dict(text='Level Valve Length (mm)', font=dict(color='black', size =22)),
                 tickfont=dict(color='black')
             ),
