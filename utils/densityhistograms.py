@@ -40,6 +40,10 @@ def make_histogram(data_selection, histogram_df, max_y):
     st.subheader("Population Structure")
 
     if not data_selection.empty:
+        # Clean x-axis labels to remove '.0'
+        if histogram_df['Level Valve Length (mm)'].dtype == 'object':
+            histogram_df['Level Valve Length (mm)'] = histogram_df['Level Valve Length (mm)'].str.replace('.0', '', regex=False)
+
         hist_plot = px.bar(
             histogram_df, 
             x= 'Level Valve Length (mm)', 
