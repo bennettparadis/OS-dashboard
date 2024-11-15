@@ -69,7 +69,7 @@ def make_histogram(data_selection, histogram_df, max_y):
                 tickfont=dict(color='black')
             )
         )
-        #hist_plot.update_yaxes(showgrid=False)
+        hist_plot.update_yaxes(showgrid=False)
         hist_plot.add_vline(x=4.5, line=dict(color='red', width=3, dash='dash'))
         hist_plot.add_vline(x=14.5, line=dict(color='red', width=3, dash='dash'))
 
