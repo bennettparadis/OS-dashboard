@@ -40,40 +40,33 @@ def make_histogram(data_selection, histogram_df, max_y):
     st.subheader("Population Structure")
 
     if not data_selection.empty:
-        # Check and clean x-axis labels if they are range strings
-        if histogram_df['Level Valve Length (mm)'].dtype == 'object':
-            histogram_df['Level Valve Length (mm)'] = (
-                histogram_df['Level Valve Length (mm)']
-                .str.replace(r'\.0', '', regex=True)  # Remove '.0' from range strings
-            )
-
         hist_plot = px.bar(
             histogram_df, 
-            x='Level Valve Length (mm)', 
+            x= 'Level Valve Length (mm)', 
             y='Frequency (oysters/m²)', 
             color_discrete_sequence=['orange'],
             width=450,
-            height=500
-        )
+            height=500)
         
         hist_plot.update_traces(
-            marker=dict(line=dict(color='black', width=1)), 
+            marker=dict(line=dict(color= 'black', width=1)), 
             selector=dict(type='bar'),
-            hoverlabel=dict(bgcolor='white', font=dict(color='black', size=16))
+            hoverlabel=dict(bgcolor='white', font=dict(color='black', size =16))
         )
         
         hist_plot.update_layout(
-            paper_bgcolor='#D6F2F4', 
+            paper_bgcolor = '#D6F2F4', 
             plot_bgcolor='#D6F2F4',
             bargap=0, 
-            yaxis_range=[0, max_y],
+            yaxis_range=[0,max_y],
             font=dict(color='black'),
             xaxis=dict(
-                title=dict(text='Level Valve Length (mm)', font=dict(color='black', size=22)),
+                tickformat= ',d', #format labels to integer values 
+                title=dict(text='Level Valve Length (mm)', font=dict(color='black', size =22)),
                 tickfont=dict(color='black')
             ),
             yaxis=dict(
-                title=dict(text='Frequency (oysters/m²)', font=dict(color='black', size=22)),
+                title=dict(text='Frequency (oysters/m²)', font=dict(color='black', size =22)),
                 tickfont=dict(color='black')
             )
         )
@@ -82,7 +75,7 @@ def make_histogram(data_selection, histogram_df, max_y):
         hist_plot.add_vline(x=14.5, line=dict(color='red', width=3, dash='dash'))
 
         hist_plot.add_annotation(
-            x=2,
+            x = 2,
             y=max_y,
             text="Spat",
             showarrow=False,
@@ -92,7 +85,7 @@ def make_histogram(data_selection, histogram_df, max_y):
         )
 
         hist_plot.add_annotation(
-            x=9,
+            x = 9,
             y=max_y,
             text="Sublegal",
             showarrow=False,
@@ -102,7 +95,7 @@ def make_histogram(data_selection, histogram_df, max_y):
         )
 
         hist_plot.add_annotation(
-            x=18,
+            x = 18,
             y=max_y,
             text="Legal",
             showarrow=False,
@@ -112,5 +105,6 @@ def make_histogram(data_selection, histogram_df, max_y):
         )
 
         st.plotly_chart(hist_plot, use_container_width=True)
+    
     else:
         st.warning("No population data available.")
