@@ -61,6 +61,7 @@ def make_histogram(data_selection, histogram_df, max_y):
             yaxis_range=[0,max_y],
             font=dict(color='black'),
             xaxis=dict(
+                tickformat= ',d', #format labels to integer values 
                 title=dict(text='Level Valve Length (mm)', font=dict(color='black', size =22)),
                 tickfont=dict(color='black')
             ),
