@@ -42,7 +42,7 @@ def make_histogram(data_selection, histogram_df, max_y):
     if not data_selection.empty:
         # Clean x-axis labels to remove '.0'
         if histogram_df['Level Valve Length (mm)'].dtype == 'object':
-            histogram_df['Level Valve Length (mm)'] = histogram_df['Level Valve Length (mm)'].str.replace('.0', '', regex=False)
+           histogram_df['Level Valve Length (mm)'] = histogram_df['Level Valve Length (mm)'].astype(int)
 
         hist_plot = px.bar(
             histogram_df, 
