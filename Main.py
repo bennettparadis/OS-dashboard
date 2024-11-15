@@ -30,7 +30,7 @@ avg_densities = np.array([
     [2021, 802, 64, 397, 341], 
     [2022, 811, 59, 450, 302], 
     [2023, 1159, 124, 811, 398],
-    [2024, 1347, 169, 730, 682]
+    [2024, 1347, 169, 728, 684]
 ])
 
 avg_dens_df = pd.DataFrame(avg_densities, columns=['Year', 'Total', 'Legal', 'Sublegal', 'Spat'])
