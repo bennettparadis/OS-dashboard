@@ -127,7 +127,7 @@ histogram_df2 = None
 
 if not hist_selection1.empty:
     bins = np.arange(1, hist_selection1['LVL'].max()+ 6, 5)
-    labels = [f'{(bins[i])}-{int(bins[i+1] - 1)}' for i in range(len(bins) - 1)]
+    labels = [f'{int(bins[i])}-{int(bins[i+1] - 1)}' for i in range(len(bins) - 1)]
     binned_data = pd.cut(hist_selection1['LVL'], bins = bins, labels = labels, right = False)
     counts = binned_data.value_counts().sort_index()
     
@@ -142,7 +142,7 @@ if not hist_selection1.empty:
 
 if not hist_selection2.empty:
     bins2 = np.arange(1, hist_selection2['LVL'].max()+ 6, 5)
-    labels2 = [f'{(bins[i])}-{int(bins[i+1] - 1)}' for i in range(len(bins) - 1)]
+    labels2 = [f'{int(bins2[i])}-{int(bins2[i+1] - 1)}' for i in range(len(bins2) - 1)]
     binned_data2 = pd.cut(hist_selection2['LVL'], bins = bins2, labels = labels2, right = False)
     counts2 = binned_data2.value_counts().sort_index()
     
