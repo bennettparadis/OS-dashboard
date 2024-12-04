@@ -42,7 +42,7 @@ def make_histogram(data_selection, histogram_df, max_y):
     if not data_selection.empty:
         hist_plot = px.bar(
             histogram_df, 
-            x= 'Level Valve Length (mm)', 
+            x= 'Left Valve Length (mm)', 
             y='Frequency (oysters/m²)', 
             color_discrete_sequence=['orange'],
             width=450,
