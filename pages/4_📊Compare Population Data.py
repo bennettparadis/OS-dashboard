@@ -135,7 +135,7 @@ if not hist_selection1.empty:
     standardized_counts = (counts / quad_count) *4
 
     histogram_df1 = pd.DataFrame({
-        'Level Valve Length (mm)' : standardized_counts.index,
+        'Left Valve Length (mm)' : standardized_counts.index,
         'Frequency (oysters/m²)' : standardized_counts.values
     })
     max_y_value1 = standardized_counts.max()*1.2
@@ -150,7 +150,7 @@ if not hist_selection2.empty:
     standardized_counts2 = (counts2 / quad_count2) *4
 
     histogram_df2 = pd.DataFrame({
-        'Level Valve Length (mm)' : standardized_counts2.index,
+        'Left Valve Length (mm)' : standardized_counts2.index,
         'Frequency (oysters/m²)' : standardized_counts2.values
     })
     max_y_value2 = standardized_counts2.max()*1.2
