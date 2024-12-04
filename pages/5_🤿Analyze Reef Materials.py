@@ -199,7 +199,7 @@ fig2.update_layout(
     plot_bgcolor='white',
     font=dict(color='black', size=18),  # Update general font settings
     xaxis=dict(
-        title=dict(text='Material Age (years)', font=dict(color='black', size=22)),
+        title=dict(text='Material Type', font=dict(color='black', size=22)),
         tickfont=dict(color='black', size=16)  # Update tick font size for x-axis
     ),
     yaxis=dict(
