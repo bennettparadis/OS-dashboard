@@ -10,15 +10,13 @@ from utils import text
 # ==========================
 @st.cache_data
 def load_data():
+    # Oyster density CSV
     df = pd.read_csv("data/2019-2025_oyster_densities.csv")
-    return df
-
-df = load_data()
-
-
-@st.cache_data
-def get_geojson_and_boundaries():
+    
+    # Oyster material shapefile
     OSMaterial = gpd.read_file("data/OS_material_storymap.shp").to_crs(epsg=4326)
+    
+    # Boundaries shapefile
     OSBoundaries = gpd.read_file("data/permit_boundaries.shp")
     centroids = OSBoundaries.geometry.centroid
     boundary_centroid_data = pd.DataFrame({
@@ -26,15 +24,16 @@ def get_geojson_and_boundaries():
         "Latitude": centroids.y,
         "Longitude": centroids.x
     })
-    return OSMaterial.__geo_interface__, boundary_centroid_data
+    
+    return df, OSMaterial.__geo_interface__, boundary_centroid_data
 
-geojson_dict, boundary_centroid_data = get_geojson_and_boundaries()
+
+df, geojson_dict, boundary_centroid_data = load_data()
 
 
 # ==========================
 # PAGE SETUP
 # ==========================
-# ❌ Removed text.tab_display() — page config already handled globally
 text.display_text("🌍Explore Pamlico Sound", font_size=50, font_weight="bold")
 text.pages_font()
 text.display_text(
@@ -79,70 +78,59 @@ year = st.sidebar.selectbox(
 # ==========================
 # DATA PREPARATION
 # ==========================
-df_selection = df.query("Year == @year").dropna(subset=["Latitude", "Longitude", "total"]).copy()
-
-# Only pass immutable data (numpy arrays) to cached functions
-df_values = df_selection[["Latitude", "Longitude", "total"]].values
+df_selection = df.query("Year == @year").dropna(subset=["Latitude", "Longitude", "total"])
 
 
 # ==========================
-# MAP CREATION (CACHED)
+# PYDECK MAP
 # ==========================
-@st.cache_resource
-def make_deck_from_values(df_values, boundary_centroid_data, geojson_dict):
-    df_selection = pd.DataFrame(df_values, columns=["Latitude", "Longitude", "total"])
-    
-    text_layer = pdk.Layer(
-        "TextLayer",
-        data=boundary_centroid_data,
-        get_position=["Longitude", "Latitude"],
-        get_text="OS_Name",
-        get_color=[0, 0, 0, 255],
-        get_size=20,
-        get_alignment_baseline="'top'",
-    )
+# Text layer (centroid names)
+text_layer = pdk.Layer(
+    "TextLayer",
+    data=boundary_centroid_data,
+    get_position=["Longitude", "Latitude"],
+    get_text="OS_Name",
+    get_color=[0, 0, 0, 255],
+    get_size=20,
+    get_alignment_baseline="'top'",
+)
 
-    material_layer = pdk.Layer(
-        "GeoJsonLayer",
-        data=geojson_dict,
-        get_fill_color=[255, 0, 0, 150],
-        pickable=True,
-    )
+# Material layer (GeoJSON)
+material_layer = pdk.Layer(
+    "GeoJsonLayer",
+    data=geojson_dict,
+    get_fill_color=[255, 0, 0, 150],
+    pickable=True,
+)
 
-    density_layer = pdk.Layer(
-        "ColumnLayer",
-        data=df_selection,
-        get_position=["Longitude", "Latitude"],
-        get_elevation="total",
-        radius=8,
-        elevation_scale=1,
-        get_fill_color=[255, 0, 0, 150],
-        pickable=True,
-        auto_highlight=True,
-    )
+# Density column layer
+density_layer = pdk.Layer(
+    "ColumnLayer",
+    data=df_selection,
+    get_position=["Longitude", "Latitude"],
+    get_elevation="total",
+    radius=8,
+    elevation_scale=1,
+    get_fill_color=[255, 0, 0, 150],
+    pickable=True,
+    auto_highlight=True,
+)
 
-    tooltip = {
-        "html": "<b>Oysters/m²:</b> {total}",
-        "style": {"backgroundColor": "steelblue", "color": "white"},
-    }
+tooltip = {
+    "html": "<b>Oysters/m²:</b> {total}",
+    "style": {"backgroundColor": "steelblue", "color": "white"},
+}
 
-    return pdk.Deck(
-        map_style="mapbox://styles/mapbox/outdoors-v9",
-        initial_view_state={
-            "latitude": 35.05,
-            "longitude": -76.4,
-            "zoom": 11.2,
-            "pitch": 60,
-        },
-        layers=[text_layer, density_layer, material_layer],
-        tooltip=tooltip,
-    )
+deck = pdk.Deck(
+    map_style="mapbox://styles/mapbox/outdoors-v9",
+    initial_view_state={
+        "latitude": 35.05,
+        "longitude": -76.4,
+        "zoom": 11.2,
+        "pitch": 60,
+    },
+    layers=[text_layer, density_layer, material_layer],
+    tooltip=tooltip,
+)
 
-
-deck = make_deck_from_values(df_values, boundary_centroid_data, geojson_dict)
-
-
-# ==========================
-# DISPLAY MAP
-# ==========================
 st.pydeck_chart(deck, use_container_width=True)
