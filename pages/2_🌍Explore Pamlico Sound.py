@@ -9,26 +9,31 @@ from utils import text
 # DATA LOADING (CACHED)
 # ==========================
 @st.cache_data
-def load_data():
-    # Oyster density CSV
-    df = pd.read_csv("data/2019-2025_oyster_densities.csv")
-    
-    # Oyster material shapefile
+def load_csv():
+    return pd.read_csv("data/2019-2025_oyster_densities.csv")
+
+@st.cache_data
+def load_shapefiles():
     OSMaterial = gpd.read_file("data/OS_material_storymap.shp").to_crs(epsg=4326)
-    
-    # Boundaries shapefile
     OSBoundaries = gpd.read_file("data/permit_boundaries.shp")
-    centroids = OSBoundaries.geometry.centroid
-    boundary_centroid_data = pd.DataFrame({
-        "OS_Name": OSBoundaries["OS_Name"],
-        "Latitude": centroids.y,
-        "Longitude": centroids.x
-    })
-    
-    return df, OSMaterial.__geo_interface__, boundary_centroid_data
+    return OSMaterial, OSBoundaries
 
+df = load_csv()
+OSMaterial, OSBoundaries = load_shapefiles()
 
-df, geojson_dict, boundary_centroid_data = load_data()
+# ==========================
+# PREP DATA
+# ==========================
+# Centroids for text layer
+centroids = OSBoundaries.geometry.centroid
+boundary_centroid_data = pd.DataFrame({
+    "OS_Name": OSBoundaries["OS_Name"],
+    "Latitude": centroids.y,
+    "Longitude": centroids.x
+})
+
+# Convert OSMaterial to GeoJSON dict
+geojson_dict = OSMaterial.__geo_interface__
 
 
 # ==========================
@@ -134,3 +139,4 @@ deck = pdk.Deck(
 )
 
 st.pydeck_chart(deck, use_container_width=True)
+
