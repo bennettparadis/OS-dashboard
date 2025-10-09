@@ -5,8 +5,9 @@ import geopandas as gpd
 from utils import text
 
 
+# ==========================
 # DATA LOADING (CACHED)
-
+# ==========================
 @st.cache_data
 def load_data():
     df = pd.read_csv("data/2019-2025_oyster_densities.csv")
@@ -18,9 +19,10 @@ def load_data():
 df, OSMaterial, OSBoundaries = load_data()
 
 
-
+# ==========================
 # PAGE SETUP
-
+# ==========================
+# ❌ Removed text.tab_display() to avoid duplicate set_page_config()
 text.display_text("🌍Explore Pamlico Sound", font_size=50, font_weight="bold")
 text.pages_font()
 text.display_text(
@@ -43,9 +45,9 @@ with st.expander("Instructions"):
     )
 
 
-
+# ==========================
 # SIDEBAR SETUP
-
+# ==========================
 st.sidebar.subheader(
     "Use the dropdown to select a year and explore oyster densities across the Oyster Sanctuary Network"
 )
@@ -62,16 +64,16 @@ year = st.sidebar.selectbox(
 )
 
 
-
+# ==========================
 # DATA PREPARATION
-
+# ==========================
 df_selection = (
     df.query("Year == @year")
     .dropna(subset=["Latitude", "Longitude", "total"])
     .copy()
 )
 
-# Compute centroids safely (without mutating the GeoDataFrame)
+# Compute centroids safely
 centroids = OSBoundaries.geometry.centroid
 boundary_centroid_data = pd.DataFrame({
     "OS_Name": OSBoundaries["OS_Name"],
@@ -79,16 +81,15 @@ boundary_centroid_data = pd.DataFrame({
     "Longitude": centroids.x
 })
 
-# Convert GeoDataFrame to GeoJSON (cached)
+# Convert GeoDataFrame to GeoJSON
 geojson_dict = OSMaterial.__geo_interface__
 
 
-
+# ==========================
 # MAP CREATION (CACHED)
-
+# ==========================
 @st.cache_resource
 def make_deck(df_selection, boundary_centroid_data, geojson_dict):
-    # Define layers
     text_layer = pdk.Layer(
         "TextLayer",
         data=boundary_centroid_data,
@@ -140,7 +141,7 @@ def make_deck(df_selection, boundary_centroid_data, geojson_dict):
 deck = make_deck(df_selection, boundary_centroid_data, geojson_dict)
 
 
+# ==========================
 # DISPLAY MAP
-
+# ==========================
 st.pydeck_chart(deck, use_container_width=True)
-
