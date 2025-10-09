@@ -123,6 +123,24 @@ OS_dict = {
         'materials':['Granite', 'Marl'],
         'zoom':15.5
     },
+    'Brant Island': {
+        'permit': 99.3, 
+        'developed':37.5,
+        'aggregate': '31,500',
+        'established':2024,
+        'recent':2025,
+        'materials':['Granite', 'Marl'],
+        'zoom':15.5
+    },
+    'Maw Point': {
+        'permit': 126.7, 
+        'developed':68.3,
+        'aggregate': '62,000',
+        'established':2024,
+        'recent':2025,
+        'materials':['Marl'],
+        'zoom':15.5
+    },
     'Cedar Island': {
         'permit': 75.0, 
         'developed':70.3,
@@ -217,3 +235,4 @@ def display_map(sanctuary_selection, filtered_materials, height, width):
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.warning("No map data available for the selected sanctuary.")
+
