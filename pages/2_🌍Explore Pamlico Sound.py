@@ -5,7 +5,7 @@ import geopandas as gpd
 from utils import text
 
 # Load data
-df = pd.read_csv('data/2019-2024_oyster_densities.csv')
+df = pd.read_csv('data/2019-2023_oyster_densities.csv')
 OSMaterial = gpd.read_file("data/OS_material_storymap.shp")
 OSBoundaries = gpd.read_file("data/permit_boundaries.shp")
 
