@@ -2,7 +2,7 @@ import streamlit as st
 import plotly.express as px
 import pandas as pd
 
-df = pd.read_csv("data/2019-2023_oyster_densities.csv")
+df = pd.read_csv("data/2019-2025_oyster_densities.csv")
 
 # Sanctuary dictionary with relevant information
 OS_dict = {
@@ -235,4 +235,5 @@ def display_map(sanctuary_selection, filtered_materials, height, width):
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.warning("No map data available for the selected sanctuary.")
+
 
