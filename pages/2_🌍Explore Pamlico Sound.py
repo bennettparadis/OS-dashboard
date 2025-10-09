@@ -11,18 +11,30 @@ from utils import text
 @st.cache_data
 def load_data():
     df = pd.read_csv("data/2019-2025_oyster_densities.csv")
+    return df
+
+df = load_data()
+
+
+@st.cache_data
+def get_geojson_and_boundaries():
     OSMaterial = gpd.read_file("data/OS_material_storymap.shp").to_crs(epsg=4326)
     OSBoundaries = gpd.read_file("data/permit_boundaries.shp")
-    return df, OSMaterial, OSBoundaries
+    centroids = OSBoundaries.geometry.centroid
+    boundary_centroid_data = pd.DataFrame({
+        "OS_Name": OSBoundaries["OS_Name"],
+        "Latitude": centroids.y,
+        "Longitude": centroids.x
+    })
+    return OSMaterial.__geo_interface__, boundary_centroid_data
 
-
-df, OSMaterial, OSBoundaries = load_data()
+geojson_dict, boundary_centroid_data = get_geojson_and_boundaries()
 
 
 # ==========================
 # PAGE SETUP
 # ==========================
-# ❌ Removed text.tab_display() to avoid duplicate set_page_config()
+# ❌ Removed text.tab_display() — page config already handled globally
 text.display_text("🌍Explore Pamlico Sound", font_size=50, font_weight="bold")
 text.pages_font()
 text.display_text(
@@ -67,29 +79,19 @@ year = st.sidebar.selectbox(
 # ==========================
 # DATA PREPARATION
 # ==========================
-df_selection = (
-    df.query("Year == @year")
-    .dropna(subset=["Latitude", "Longitude", "total"])
-    .copy()
-)
+df_selection = df.query("Year == @year").dropna(subset=["Latitude", "Longitude", "total"]).copy()
 
-# Compute centroids safely
-centroids = OSBoundaries.geometry.centroid
-boundary_centroid_data = pd.DataFrame({
-    "OS_Name": OSBoundaries["OS_Name"],
-    "Latitude": centroids.y,
-    "Longitude": centroids.x
-})
-
-# Convert GeoDataFrame to GeoJSON
-geojson_dict = OSMaterial.__geo_interface__
+# Only pass immutable data (numpy arrays) to cached functions
+df_values = df_selection[["Latitude", "Longitude", "total"]].values
 
 
 # ==========================
 # MAP CREATION (CACHED)
 # ==========================
 @st.cache_resource
-def make_deck(df_selection, boundary_centroid_data, geojson_dict):
+def make_deck_from_values(df_values, boundary_centroid_data, geojson_dict):
+    df_selection = pd.DataFrame(df_values, columns=["Latitude", "Longitude", "total"])
+    
     text_layer = pdk.Layer(
         "TextLayer",
         data=boundary_centroid_data,
@@ -124,7 +126,7 @@ def make_deck(df_selection, boundary_centroid_data, geojson_dict):
         "style": {"backgroundColor": "steelblue", "color": "white"},
     }
 
-    deck = pdk.Deck(
+    return pdk.Deck(
         map_style="mapbox://styles/mapbox/outdoors-v9",
         initial_view_state={
             "latitude": 35.05,
@@ -135,10 +137,9 @@ def make_deck(df_selection, boundary_centroid_data, geojson_dict):
         layers=[text_layer, density_layer, material_layer],
         tooltip=tooltip,
     )
-    return deck
 
 
-deck = make_deck(df_selection, boundary_centroid_data, geojson_dict)
+deck = make_deck_from_values(df_values, boundary_centroid_data, geojson_dict)
 
 
 # ==========================
