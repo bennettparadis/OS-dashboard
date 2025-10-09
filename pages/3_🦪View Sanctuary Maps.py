@@ -33,7 +33,7 @@ with st.expander("Instructions"):
 
 #IMPORT OS DATA (densities and extraction samples)
 OSMaterial = gpd.read_file("data/OS_material_storymap.shp")
-df = pd.read_csv("data/2019-2023_oyster_densities.csv")
+df = pd.read_csv("data/2019-2025_oyster_densities.csv")
 
 # ----- SIDE BAR -----
 sanctuary_names = sorted(df["OS_Name"].unique())
@@ -70,3 +70,4 @@ with col2:
     
     *Developed habitat is the area covered by material and the space between mounds/ridges  
 """)
+
