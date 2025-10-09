@@ -4,37 +4,17 @@ import pydeck as pdk
 import geopandas as gpd
 from utils import text
 
-
 # ==========================
 # DATA LOADING (CACHED)
 # ==========================
 @st.cache_data
-def load_csv():
-    return pd.read_csv("data/2019-2025_oyster_densities.csv")
-
-@st.cache_data
-def load_shapefiles():
+def load_data():
+    df = pd.read_csv("data/2019-2025_oyster_densities.csv")
     OSMaterial = gpd.read_file("data/OS_material_storymap.shp").to_crs(epsg=4326)
     OSBoundaries = gpd.read_file("data/permit_boundaries.shp")
-    return OSMaterial, OSBoundaries
+    return df, OSMaterial, OSBoundaries
 
-df = load_csv()
-OSMaterial, OSBoundaries = load_shapefiles()
-
-# ==========================
-# PREP DATA
-# ==========================
-# Centroids for text layer
-centroids = OSBoundaries.geometry.centroid
-boundary_centroid_data = pd.DataFrame({
-    "OS_Name": OSBoundaries["OS_Name"],
-    "Latitude": centroids.y,
-    "Longitude": centroids.x
-})
-
-# Convert OSMaterial to GeoJSON dict
-geojson_dict = OSMaterial.__geo_interface__
-
+df, OSMaterial, OSBoundaries = load_data()
 
 # ==========================
 # PAGE SETUP
@@ -60,36 +40,43 @@ with st.expander("Instructions"):
         """
     )
 
-
 # ==========================
-# SIDEBAR SETUP
+# SIDEBAR
 # ==========================
 st.sidebar.subheader(
     "Use the dropdown to select a year and explore oyster densities across the Oyster Sanctuary Network"
 )
 
-default_year = 2024
 year_list = sorted(df["Year"].unique())
+default_year = 2024
 default_year_index = year_list.index(default_year) if default_year in year_list else 0
 
 year = st.sidebar.selectbox(
     "Select a Year:",
     year_list,
     index=default_year_index,
-    key="year_selector_explore",
+    key="year_selector_explore"
 )
-
 
 # ==========================
 # DATA PREPARATION
 # ==========================
 df_selection = df.query("Year == @year").dropna(subset=["Latitude", "Longitude", "total"])
 
+# Centroids for text layer
+centroids = OSBoundaries.geometry.centroid
+boundary_centroid_data = pd.DataFrame({
+    "OS_Name": OSBoundaries["OS_Name"],
+    "Latitude": centroids.y,
+    "Longitude": centroids.x
+})
+
+# Convert OSMaterial to GeoJSON dict
+geojson_dict = OSMaterial.__geo_interface__
 
 # ==========================
 # PYDECK MAP
 # ==========================
-# Text layer (centroid names)
 text_layer = pdk.Layer(
     "TextLayer",
     data=boundary_centroid_data,
@@ -100,7 +87,6 @@ text_layer = pdk.Layer(
     get_alignment_baseline="'top'",
 )
 
-# Material layer (GeoJSON)
 material_layer = pdk.Layer(
     "GeoJsonLayer",
     data=geojson_dict,
@@ -108,7 +94,6 @@ material_layer = pdk.Layer(
     pickable=True,
 )
 
-# Density column layer
 density_layer = pdk.Layer(
     "ColumnLayer",
     data=df_selection,
@@ -139,4 +124,3 @@ deck = pdk.Deck(
 )
 
 st.pydeck_chart(deck, use_container_width=True)
-
