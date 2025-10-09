@@ -21,7 +21,6 @@ df, OSMaterial, OSBoundaries = load_data()
 
 # PAGE SETUP
 
-text.tab_display()
 text.display_text("🌍Explore Pamlico Sound", font_size=50, font_weight="bold")
 text.pages_font()
 text.display_text(
@@ -144,3 +143,4 @@ deck = make_deck(df_selection, boundary_centroid_data, geojson_dict)
 # DISPLAY MAP
 
 st.pydeck_chart(deck, use_container_width=True)
+
