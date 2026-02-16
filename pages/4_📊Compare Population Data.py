@@ -15,7 +15,7 @@ warnings.filterwarnings('ignore')
 st.set_page_config(page_title="NC Oyster Sanctuary Data", page_icon=":oyster:", layout="wide")
 
 #IMPORT OS DATA (densities and extraction samples)
-df = pd.read_csv("data/2019-2024_oyster_densities.csv")
+df = pd.read_csv("data/2019-2025_oyster_densities.csv")
 
 histdata = pd.read_csv("data/OSdata_extractions.csv")
 OSMaterial = gpd.read_file("data/OS_material_storymap.shp")
@@ -178,18 +178,20 @@ with col1:
    
 
 with col2:
-    st.html(
+    st.markdown(
         '''
-                <div class="divider-vertical-line"></div>
-                <style>
-                    .divider-vertical-line {
-                        border-left: 2px solid rgba(176, 206, 218);
-                        height: 1800px;
-                        margin: auto;
-                    }
-                </style>
-            '''
+        <div class="divider-vertical-line"></div>
+        <style>
+            .divider-vertical-line {
+                border-left: 2px solid rgba(176, 206, 218);
+                height: 1800px;
+                margin: auto;
+            }
+        </style>
+        ''',
+        unsafe_allow_html=True
     )
+
 
 #SELECTION 2 COLUMN
 with col3:
