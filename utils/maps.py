@@ -2,7 +2,7 @@ import streamlit as st
 import plotly.express as px
 import pandas as pd
 
-df = pd.read_csv("data/2019-2023_oyster_densities.csv")
+df = pd.read_csv("data/2019-2025_oyster_densities.csv")
 
 # Sanctuary dictionary with relevant information
 OS_dict = {
@@ -131,7 +131,35 @@ OS_dict = {
         'recent':2023,
         'materials':['Crushed Concrete', 'Marl'],
         'zoom':15.8
+    },
+    'Maw Point': {
+        'permit': 126.7, 
+        'developed':68.3,
+        'aggregate': '62,000',
+        'established':2024,
+        'recent':2025,
+        'materials':['Marl'],
+        'zoom':15.5
+    },
+    'Brant Island': {
+        'permit': 99.3, 
+        'developed':27.2,
+        'aggregate': '31,500',
+        'established':2024,
+        'recent':2025,
+        'materials':['Granite', 'Marl'],
+        'zoom':15.8
+    },
+     'Gull Shoal': {
+        'permit': 158.4, 
+        'developed':42.0,
+        'aggregate': '36,000',
+        'established':2022,
+        'recent':2023,
+        'materials':['Granite'],
+        'zoom':15.8
     }
+
 }
 
 # Define the color mapping dictionary
