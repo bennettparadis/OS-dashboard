@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
-import pydeck as pdk
+import plotly.express as px
+import json
+import branca.colormap as cm
 import geopandas as gpd
 from utils import text
 
@@ -41,8 +43,12 @@ year = st.sidebar.selectbox(
 #IMPORT DATA
 df_selection = df.query("Year == @year")
 
-# Remove rows with missing values in 'Latitude', 'Longitude', 'total'
-df_selection = df_selection.dropna(subset=['Latitude', 'Longitude', 'total'])
+# Force lat/long to numeric, turn '#VALUE!' into NaN
+df_selection["Latitude"] = pd.to_numeric(df_selection["Latitude"], errors="coerce")
+df_selection["Longitude"] = pd.to_numeric(df_selection["Longitude"], errors="coerce")
+
+# Now drop invalid rows
+df_selection = df_selection.dropna(subset=["Latitude", "Longitude", "total"])
 
 # Extract centroids for each geometry in OSBoundaries
 OSBoundaries['centroid'] = OSBoundaries.geometry.centroid
@@ -52,62 +58,40 @@ OSBoundaries['Longitude'] = OSBoundaries.centroid.x
 # Convert centroids to a DataFrame
 boundary_centroid_data = OSBoundaries[['OS_Name', 'Latitude', 'Longitude']]
 
-# Convert GeoDataFrame to GeoJSON dictionary
-geojson_dict = OSMaterial.to_crs(epsg=4326).__geo_interface__
+# Convert GeoDataFrame to GeoJSON
+material_geojson = json.loads(OSMaterial.to_crs(epsg=4326).to_json())
 
-# Define layers
-# TextLayer with positions of each geometry's centroid
-text_layer = pdk.Layer(
-    "TextLayer",
-    data=boundary_centroid_data,
-    get_position=["Longitude", "Latitude"],
-    get_text="OS_Name",
-    get_color=[0, 0, 0, 255],
-    get_size=20,
-    get_alignment_baseline="'top'",
+fig = px.scatter_mapbox(
+    df_selection,
+    lat="Latitude",
+    lon="Longitude",
+    size="total",
+    size_max=25,
+    color="total",
+    color_continuous_scale=["red", "green"],  # <-- fixed red
+    hover_name="SID",
+    hover_data={"total": True, "Material":True, "Material_Age":True},
+    zoom=11,
+    center={"lat": 35.05, "lon": -76.4},
 )
 
-# Material layer
-material_layer = pdk.Layer(
-    "GeoJsonLayer",
-    data=geojson_dict,  
-    get_fill_color=[255, 0, 0, 150],
-    pickable=True,
+# Use free MapLibre tiles
+fig.update_layout(
+    mapbox_style="open-street-map",
+    margin={"r":0,"t":0,"l":0,"b":0}
 )
 
-max_total = df_selection['total'].max()
-
-density_layer = pdk.Layer(
-    "ColumnLayer",
-    data=df_selection,
-    get_position=["Longitude", "Latitude"],
-    get_elevation="total",
-    radius=8,
-    elevation_scale=1,
-    get_fill_color=[255, 0, 0, 150],
-    pickable=True,
-    auto_highlight=True,
+# Add material polygons
+fig.update_layout(
+    mapbox_layers=[
+        {
+            "source": material_geojson,
+            "type": "fill",
+            "color": "orange",
+            "opacity": 0.4
+        }
+    ]
 )
 
-tooltip = {
-    "html": "<b>Oysters/m²:</b> {total}",
-    "style": {
-        "backgroundColor": "steelblue",
-        "color": "white"
-    }
-}
+st.plotly_chart(fig, use_container_width=True)
 
-# Display map
-st.pydeck_chart(
-    pdk.Deck(
-        map_style="mapbox://styles/mapbox/outdoors-v9",
-        initial_view_state={
-            "latitude": 35.05,
-            "longitude": -76.4,
-            "zoom": 11.2,
-            "pitch": 60,
-        },
-        layers=[text_layer, density_layer, material_layer],
-        tooltip=tooltip  # Add the tooltip configuration
-    ), use_container_width=True
-)
