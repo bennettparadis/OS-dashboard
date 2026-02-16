@@ -16,7 +16,7 @@ text.tab_display()
 # --- HEADER & INFO TEXT ---
 text.display_text("🦪View Oyster Sanctuary Maps", font_size=50, font_weight='bold')
 text.pages_font()
-text.display_text("Noth Carolina's oyster sanctuaries are large-scale restoration sites ranging from 4 to 80 acres. The sanctuaries have been built with a variety of materials such as crushed aggregate rock (marl limestone, granite, concrete, basalt), reef balls, concrete pipe, and recycled shell. Select an oyster sanctuary to view the material blueprint.")
+text.display_text("Noth Carolina's oyster sanctuaries are large-scale restoration sites ranging from 4 to 154 acres. The sanctuaries have been built with a variety of materials such as crushed aggregate rock (marl limestone, granite, concrete, basalt), reef balls, concrete pipe, and recycled shell. Select an oyster sanctuary to view the material blueprint.")
 
 with st.expander("Instructions"):
     st.info(
@@ -33,7 +33,8 @@ with st.expander("Instructions"):
 
 #IMPORT OS DATA (densities and extraction samples)
 OSMaterial = gpd.read_file("data/OS_material_storymap.shp")
-df = pd.read_csv("data/2019-2023_oyster_densities.csv")
+OSBoundary = gpd.read_file("data/permit_boundaries.shp")
+df = pd.read_csv("data/2019-2025_oyster_densities.csv")
 
 # ----- SIDE BAR -----
 sanctuary_names = sorted(df["OS_Name"].unique())
