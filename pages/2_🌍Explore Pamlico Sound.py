@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import json
-import branca.colormap as cm
 import geopandas as gpd
 from utils import text
 
@@ -23,6 +22,7 @@ with st.expander("THIS PAGE IS UNDERGOING MAINTENANCE"):
 
               
     """)
+
 
 
 
