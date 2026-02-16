@@ -19,8 +19,7 @@ text.display_text("As of 2025, North Carolina has 17 oyster sanctuaries in Pamli
 
 with st.expander("THIS PAGE IS UNDERGOING MAINTENANCE"):
     st.info("""
-             **
-            **
+             **Please come back at another time to view an interactive map of the Pamlico Sound Oyster Sanctuary Network**
 
               
     """)
@@ -90,5 +89,6 @@ fig.update_layout(
 )
 
 st.plotly_chart(fig, use_container_width=True)
+
 
 
