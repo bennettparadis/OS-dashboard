@@ -17,17 +17,13 @@ text.display_text("🌍Explore Pamlico Sound", font_size=50, font_weight='bold')
 text.pages_font()
 text.display_text("As of 2025, North Carolina has 17 oyster sanctuaries in Pamlico Sound, providing a total of 789 acres of protected subtidal habitat. Every year NCDMF's Habitat & Enhancement dive team visits each sanctuary to collect oyster data around the reefs. Explore the map to see how oyster densities differ across Pamlico Sound over the last few years.")
 
-with st.expander("Instructions"):
+with st.expander("THIS PAGE IS UNDERGOING MAINTENANCE"):
     st.info("""
-             **Click and drag the map to explore Pamlico Sound. Use the scroll-wheel to zoom in and out.**
+             **
+            **
 
-              **Hold the right mouse button to rotate the map.** 
-
-             **The red bars show where our dive team has sampled at each sanctuary. Hover over one to see the observed oyster density.**
-
-             **Select a year from the drop down menu in the sidebar to see how densities change over time.** 
+              
     """)
-
 #SIDEBAR SETUP
 st.sidebar.subheader("Use the dropdown to select a year and explore oyster densities across the Oyster Sanctuary Network")
 default_year = 2025
@@ -94,4 +90,5 @@ fig.update_layout(
 )
 
 st.plotly_chart(fig, use_container_width=True)
+
 
