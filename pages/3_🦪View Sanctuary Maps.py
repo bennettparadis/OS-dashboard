@@ -33,7 +33,6 @@ with st.expander("Instructions"):
 
 #IMPORT OS DATA (densities and extraction samples)
 OSMaterial = gpd.read_file("data/OS_material_storymap.shp")
-OSBoundary = gpd.read_file("data/permit_boundaries.shp")
 df = pd.read_csv("data/2019-2025_oyster_densities.csv")
 
 # ----- SIDE BAR -----
