@@ -23,72 +23,7 @@ with st.expander("THIS PAGE IS UNDERGOING MAINTENANCE"):
 
               
     """)
-#SIDEBAR SETUP
-st.sidebar.subheader("Use the dropdown to select a year and explore oyster densities across the Oyster Sanctuary Network")
-default_year = 2025
-default_year_index = list(df["Year"].unique()).index(default_year)
 
-year = st.sidebar.selectbox(
-    "Select a Year:", 
-    df["Year"].unique(),
-    index=default_year_index,
-    key=30
-)
-
-#IMPORT DATA
-df_selection = df.query("Year == @year")
-
-# Force lat/long to numeric, turn '#VALUE!' into NaN
-df_selection["Latitude"] = pd.to_numeric(df_selection["Latitude"], errors="coerce")
-df_selection["Longitude"] = pd.to_numeric(df_selection["Longitude"], errors="coerce")
-
-# Now drop invalid rows
-df_selection = df_selection.dropna(subset=["Latitude", "Longitude", "total"])
-
-# Extract centroids for each geometry in OSBoundaries
-OSBoundaries['centroid'] = OSBoundaries.geometry.centroid
-OSBoundaries['Latitude'] = OSBoundaries.centroid.y
-OSBoundaries['Longitude'] = OSBoundaries.centroid.x
-
-# Convert centroids to a DataFrame
-boundary_centroid_data = OSBoundaries[['OS_Name', 'Latitude', 'Longitude']]
-
-# Convert GeoDataFrame to GeoJSON
-material_geojson = json.loads(OSMaterial.to_crs(epsg=4326).to_json())
-
-fig = px.scatter_mapbox(
-    df_selection,
-    lat="Latitude",
-    lon="Longitude",
-    size="total",
-    size_max=25,
-    color="total",
-    color_continuous_scale=["red", "green"],  # <-- fixed red
-    hover_name="SID",
-    hover_data={"total": True, "Material":True, "Material_Age":True},
-    zoom=11,
-    center={"lat": 35.05, "lon": -76.4},
-)
-
-# Use free MapLibre tiles
-fig.update_layout(
-    mapbox_style="open-street-map",
-    margin={"r":0,"t":0,"l":0,"b":0}
-)
-
-# Add material polygons
-fig.update_layout(
-    mapbox_layers=[
-        {
-            "source": material_geojson,
-            "type": "fill",
-            "color": "orange",
-            "opacity": 0.4
-        }
-    ]
-)
-
-st.plotly_chart(fig, use_container_width=True)
 
 
 
