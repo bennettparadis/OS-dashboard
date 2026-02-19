@@ -31,7 +31,7 @@ avg_densities = np.array([
     [2022, 811, 59, 450, 302], 
     [2023, 1159, 124, 811, 398],
     [2024, 1347, 169, 728, 684],
-    [2025, 1416, 138, 698, 580]
+    [2025, 1197, 99, 543, 542]
 ])
 
 avg_dens_df = pd.DataFrame(avg_densities, columns=['Year', 'Total', 'Legal', 'Sublegal', 'Spat'])
@@ -120,4 +120,5 @@ with col2:
     text.display_text(
         "This donut chart illustrates the average proportion of each oyster size class found across all sanctuaries in a given year. Hover over the plot to view the approximate density for each size class. Select a year in the sidebar to change the data & the graph."
     )
+
 
