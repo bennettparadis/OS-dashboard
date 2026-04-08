@@ -13,10 +13,12 @@ SCUBA-certified biologists survey each site to collect data on oyster density, p
 makes that dataset explorable and interactive.
 
 ## Features
-- 📊 Visualize oyster density trends across sanctuaries and years
-- 🪨 Compare performance across different reef construction materials
-- 📈 Explore size-class distributions and population structure
-- 🗺️ Filter and drill down by site, year, and substrate type
+- 🦪 View blueprints and maps of the oyster sanctuaries
+- 📊 Explore size-class distributions and population structure
+- 🤿 Compare performance across different reef construction materials
+- 📈 Visualize oyster size class density trends time
+- 🦀 Filter by site, year, material type, and size-class
+- 📋 Read about the survey methodology
 
 <img width="1675" height="803" alt="Screenshot (11)" src="https://github.com/user-attachments/assets/e8752ac8-3a63-4583-96d0-0acaa4a79bbe" />
 
