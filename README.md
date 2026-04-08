@@ -4,7 +4,7 @@ An interactive Streamlit app for exploring and visualizing annual SCUBA survey d
 
 🔗 **Live App:** https://ncos-data.streamlit.app/
 
-<img width="1904" height="915" alt="OSWebApp_hist png" src="https://github.com/user-attachments/assets/a4319f4e-9c0f-471c-aee3-66b40f80f1d2" />
+<img width="1704" height="815" alt="OSWebApp_hist png" src="https://github.com/user-attachments/assets/a4319f4e-9c0f-471c-aee3-66b40f80f1d2" />
 
 
 ## Overview
@@ -18,7 +18,7 @@ makes that dataset explorable and interactive.
 - 📈 Explore size-class distributions and population structure
 - 🗺️ Filter and drill down by site, year, and substrate type
 
-<img width="1875" height="903" alt="Screenshot (11)" src="https://github.com/user-attachments/assets/e8752ac8-3a63-4583-96d0-0acaa4a79bbe" />
+<img width="1675" height="803" alt="Screenshot (11)" src="https://github.com/user-attachments/assets/e8752ac8-3a63-4583-96d0-0acaa4a79bbe" />
 
 
 ## Getting Started
