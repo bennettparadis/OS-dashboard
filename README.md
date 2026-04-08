@@ -1,13 +1,43 @@
+# 🦪 North Carolina Oyster Sanctuary Data Explorer
 
-# North Carolina's Oyster Sanctuary Data Explorer
+An interactive Streamlit app for exploring and visualizing annual SCUBA survey data from NC's Oyster Sanctuary Program.
 
-Python script for an interactive streamlit app that allows users to explore and visualize NC's Oyster Sanctuary data
+🔗 **Live App:** https://ncos-data.streamlit.app/
 
-https://ncos-data.streamlit.app/
+<img width="1904" height="915" alt="OSWebApp_hist png" src="https://github.com/user-attachments/assets/a4319f4e-9c0f-471c-aee3-66b40f80f1d2" />
 
-## Summary
-North Carolina's Division of Marine Fisheries began the Oyster Sanctuary Program to create protected artificial reefs in an effort to restore the state's subtidal oyster population. 
-Today, there are 15 oyster sanctuaries spanning 563 acres of protected subtidal habitat in Pamlico Sound. 
-Each year, biologists conduct SCUBA surveys to collect oyster data on the performance of each sanctuary and the various materials used to build each reef. 
-The code here utilizes streamlit to create an interactive dashboard that summarizes and visualizes the dataset from 2019-2023. 
-The dashboard allows users to explore the Oyster Sanctuary Program's dataset and look for temporal changes and differences in how materials perform at the sanctuaries!
+
+## Overview
+North Carolina's Division of Marine Fisheries has been constructing and  monitoring oyster sanctuaries in Pamlico Sound since 1996. Each year, 
+SCUBA-certified biologists survey each site to collect data on oyster density, population structure, and material performance. This dashboard 
+makes that dataset explorable and interactive.
+
+## Features
+- 📊 Visualize oyster density trends across sanctuaries and years
+- 🪨 Compare performance across different reef construction materials
+- 📈 Explore size-class distributions and population structure
+- 🗺️ Filter and drill down by site, year, and substrate type
+
+<img width="1875" height="903" alt="Screenshot (11)" src="https://github.com/user-attachments/assets/e8752ac8-3a63-4583-96d0-0acaa4a79bbe" />
+
+
+## Getting Started
+### Run locally
+pip install -r requirements.txt
+streamlit run app.py
+
+### Dependencies
+- Python 3.11.7
+- streamlit==1.36.0
+- numpy==2.0.0
+- pandas==2.2.2
+- geopandas==1.0.0
+- plotly==5.22.0
+- pydeck==0.9.1
+- statsmodels
+
+## Data
+- GIS Shapefile of Oyster Sanctuary Reefs
+- Annual SCUBA survey data from NC oyster sanctuaries (2019-2025) 
+Data collected and maintained by NCDMF's Habitat Enhancement Section.
+
